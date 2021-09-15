@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   get '/search' => "searches#search", as: "search"
 
-  root :to =>'homes#top'
+  root to: 'homes#top'
   get 'homes/about'
 
 

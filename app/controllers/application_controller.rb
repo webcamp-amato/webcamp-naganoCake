@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::Base
-  #ログインしていない場合はトップページとアバウトページのみ遷移可能
-  before_action :authenticate_user!, except: [:top, :about]
-
   #ログインしている場合は商品一覧ページへ
   def after_sign_in_path_for(resource)
     items_path

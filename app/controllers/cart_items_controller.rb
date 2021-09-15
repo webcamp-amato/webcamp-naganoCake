@@ -1,4 +1,4 @@
-class Public::CartItemsController < ApplicationController
+class CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index

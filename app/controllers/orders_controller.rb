@@ -9,12 +9,16 @@ class OrdersController < ApplicationController
 
   def create
   end
+  
+  def new
+  end
 
   def confirm
   end
 
   def complete
   end
+  
 
   private
     def order_params

@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+  }
+  devise_for :customers, controllers: {
+    sessions:      'customers/sessions',
+    passwords:     'customers/passwords',
+    registrations: 'customers/registrations'
+  }
+
   resources :customers, only: [:show, :edit, :update, :destroy] do
     get '/confirm' => 'customers#confirm', as: "confirm"
     resources :delivery_addresses, only: [:index, :edit, :update, :destroy, :create]
@@ -13,7 +24,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   get '/search' => "searches#search", as: "search"
 
-  root :to =>'homes#top'
+  root to: 'homes#top'
   get 'homes/about'
 
 
@@ -25,9 +36,5 @@ Rails.application.routes.draw do
     resources :order_items, only: [:update]
   end
 
-
-
-  devise_for :admins
-  devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

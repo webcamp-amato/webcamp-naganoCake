@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  #ログインしていない場合はトップページとアバウトページのみ遷移可能
-  before_action :authenticate_customer!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   #ログインしている場合は商品一覧ページへ

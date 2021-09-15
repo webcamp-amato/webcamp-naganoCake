@@ -7,11 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/6f0d38cdd3.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <header></header>
+    <div class="header">
+      <%= render "layouts/header" %>
+    </div>
     <%= yield %>
-    <footer></footer>
+    <div class="footer">
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>

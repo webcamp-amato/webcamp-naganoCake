@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
   end
   
   def new
+    @customer = Customer.find(params[:id])
+    @new_place = Delivery_places.new
+    
   end
 
   def confirm

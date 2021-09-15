@@ -1,4 +1,4 @@
-class Public::SearchesController < ApplicationController
+class SearchesController < ApplicationController
   def search
   end
 end

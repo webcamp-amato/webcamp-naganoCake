@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     get '/confirm' => 'customers#confirm', as: "confirm"
-    resources :delivery_addresses, only: [:index, :edit, :update, :destroy, :create]
+    resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete '/cart_items' => 'cart_items#all_destroy'
     resources :orders, only: [:create, :index, :show, :new]

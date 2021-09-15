@@ -1,4 +1,4 @@
-class DeliveryPlaController < ApplicationController
+class DeliveryPlacesController < ApplicationController
    before_action :authenticate_customer!
 
   def index

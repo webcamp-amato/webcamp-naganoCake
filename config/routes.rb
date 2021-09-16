@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resources :customers, only: [:show, :edit, :update, :destroy] do
+  resources :customers, only: [:show, :edit, :update] do
+    patch '/leave' => 'customers#leave', as: "leave"
     get '/confirm' => 'customers#confirm', as: "confirm"
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete '/cart_items' => 'cart_items#all_destroy'

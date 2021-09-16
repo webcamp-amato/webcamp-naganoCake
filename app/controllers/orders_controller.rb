@@ -7,18 +7,14 @@ class OrdersController < ApplicationController
   def show
   end
 
-  def create
-
-      redirect_to customer_orders_complete_path
-  end
 
   def new
-    @customer = Customer.find(params[:customer_id])
+    @customer = current_customer
   end
 
   def confirm
     @order = Order.new
-    @customer = Customer.find(params[:customer_id])
+    @customer = current_customer
     @order.customer_id = @customer.id
     @new_place = DeliveryPlace.new
     @new_place.customer_id = @customer.id
@@ -31,20 +27,25 @@ class OrdersController < ApplicationController
       @order.address = @customer.address
       full_name = @customer.last_name + @customer.first_name
       @order.addressee = full_name
-      
-    elsif params[:place_option] == "1"
-      @sta = params[:address].to_i
-      @order_place = DeliveryPlace.find(@sta)
-      @order.postcode = @order_address.postcode
-      @order.address = @order_address.address
-      @order.addressee = @order_address.addressee
-    elsif params[:order][:place_option] == "2"
-      @order.postcode = params[:order][:postcode]
-      @order.address = params[:order][:address]
-      @order.addressee = params[:order][:addressee]
-    end
-      binding.pry
 
+    elsif params[:place_option] == "1"
+      @sta = params[:order_place]
+      @order_place = DeliveryPlace.find(@sta)
+      @order.postcode = @order_place.postcode
+      @order.address = @order_place.address
+      @order.addressee = @order_place.addressee
+
+    elsif params[:place_option] == "2"
+      @order.postcode = params[:postcode]
+      @order.address = params[:address]
+      @order.addressee = params[:addressee]
+    end
+    # binding.pry
+
+  end
+
+  def create
+      redirect_to customer_orders_complete_path
   end
 
   def complete
@@ -53,6 +54,6 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:payment_method, :place_option, :postcode, :address, :addressee)
+      params.require(:order).permit(:payment_method, :place_option,:order_place, :postcode, :address, :addressee)
     end
 end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
   }
   devise_for :customers, controllers: {
     sessions:      'customers/sessions',
@@ -11,16 +11,15 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resources :customers, only: [:show, :edit, :update, :destroy] do
-    get '/confirm' => 'customers#confirm', as: "confirm"
-    resources :delivery_addresses, only: [:index, :edit, :update, :destroy, :create]
-    resources :cart_items, only: [:create, :index, :update, :destroy]
-    delete '/cart_items' => 'cart_items#all_destroy'
-    resources :orders, only: [:create, :index, :show]
-    get '/orders/confirm' => 'orders#confirm'
-    get '/orders/complete' => 'orders#complete'
-  end
-
+  resources :customers, only: [:show, :edit, :update]
+  patch '/leave' => 'customers#leave', as: "leave"
+  get '/confirm' => 'customers#confirm', as: "confirm"
+  resources :cart_items, only: [:create, :index, :update, :destroy]
+  delete '/cart_items' => 'cart_items#all_destroy'
+  post '/orders/confirm' => 'orders#confirm'
+  get '/orders/complete' => 'orders#complete'
+  resources :orders, only: [:create, :index, :show, :new]
+  resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
   resources :items, only: [:index, :show]
   get '/search' => "searches#search", as: "search"
 

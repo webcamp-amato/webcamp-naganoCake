@@ -4765,3 +4765,5 @@ Processing by OrdersController#confirm as HTML
 Completed 200 OK in 3675135ms (Views: 961.3ms | ActiveRecord: 2.6ms)
 
 
+  [1m[36mDeliveryPlace Load (5.5ms)[0m  [1m[34mSELECT  "delivery_places".* FROM "delivery_places" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDeliveryPlace Load (0.1ms)[0m  [1m[34mSELECT  "delivery_places".* FROM "delivery_places" LIMIT ?[0m  [["LIMIT", 11]]

@@ -8878,3 +8878,29 @@ Completed 200 OK in 145ms (Views: 142.2ms | ActiveRecord: 0.2ms)
 
   [1m[36mDeliveryPlace Load (0.4ms)[0m  [1m[34mSELECT  "delivery_places".* FROM "delivery_places" LIMIT ?[0m  [["LIMIT", 11]]
 >>>>>>> origin/develop
+Started GET "/items/1" for 125.196.131.128 at 2021-09-16 05:36:00 +0000
+Cannot render console from 125.196.131.128! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:7
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? ORDER BY "customers"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:8
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (1161.6ms)
+Completed 500 Internal Server Error in 1256ms (ActiveRecord: 2.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `cart_items_path' for #<#<Class:0x0000000006aea5c8>:0x0000000006b07600>):
+    12:               <h4 class="card-title"><%= @item.name %></h4>
+    13:               <p class="card-text"><%= @item.description %></p>
+    14:               <h3>￥<%= @item.price %></h3><p>(税込)</p>
+    15:               <%= form_with model: @cart_item,  local: true do |f| %>]
+    16:                 <%= f.select :count, [["1個", 1], ["2個", 2], ["3個", 3], ["4個", 4], ["5個", 5]] %>
+    17:               <% end %>
+    18:             </div>
+  
+app/views/items/show.html.erb:15:in `_app_views_items_show_html_erb___3657199852479031878_56056640'

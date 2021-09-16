@@ -13,7 +13,7 @@
               <p class="card-text"><%= @item.description %></p>
               <h3>￥<%= @item.price %></h3><p>(税込)</p>
               <%= form_with model: @cart_item,  local: true do |f| %>]
-                <%= f.select :count, [[]]
+                <%= f.select :count, [["1個", 1], ["2個", 2], ["3個", 3], ["4個", 4], ["5個", 5]] %>
               <% end %>
             </div>
           </div>

@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
 
   def new
-    @customer = current_customer
+    @customer = current_customert
   end
 
   def confirm

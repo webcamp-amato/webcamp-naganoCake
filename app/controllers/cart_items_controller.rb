@@ -13,10 +13,10 @@ class CartItemsController < ApplicationController
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.count += params[:cart_item][:count].to_i
       @cart_item.save
-      redirect_to customer_cart_items_url(@cart_item.customer)
+      redirect_to cart_items_url(@cart_item.customer)
     elsif
       @cart_item.save
-      redirect_to customer_cart_items_url(@cart_item.customer)
+      redirect_to cart_items_url(@cart_item.customer)
     else
       redirect_to items_url
     end

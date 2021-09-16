@@ -8,27 +8,33 @@
           <th>数量</th>
           <th>小計</th>
       </tr>
-
+      
+    <% @cart_items.each do |cart_item| %>
       <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>
+            <!--<%= attachment_image_tag cart_item, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>-->
+            <%= cart_item.name %>
+          </td>
+          <td><%= cart_item.add_tax_price %></td>
+          <td><%= cart_item.count %></td>
+          <td><%= cart_item.subtotal %></td>
+          <%= @sum +=  cart_item.subtotal %>
       </tr>
+    <% end %>
   </table>
-
+  
   <table>
     <tr>
       <th>送料</th>
-      <td></td>
+      <td><%= @order.postage %></td>
     </tr>
     <tr>
       <th>商品合計</th>
-      <td></td>
+      <td><%= @sum %></td>
     </tr>
     <tr>
       <th>請求金額</th>
-      <td></td>
+      <td><%= (@order.postage + @sum) %></td>
     </tr>
   </table>
 

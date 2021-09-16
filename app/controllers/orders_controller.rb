@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
 
   def new
-    @customer = current_customert
+    @customer = current_customer
   end
 
   def confirm
@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
     @order.payment_method = params[:payment_method].to_i
     @order.postage = 800
     @cart_items = @customer.cart_items
+    @sum = 0
 
     if params[:place_option] == "0"
       @order.postcode = @customer.postcode
@@ -45,6 +46,8 @@ class OrdersController < ApplicationController
   end
 
   def create
+      @order = @Order.new(order_params)
+      @order.save
       redirect_to customer_orders_complete_path
   end
 

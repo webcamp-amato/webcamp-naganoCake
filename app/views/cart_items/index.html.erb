@@ -12,15 +12,15 @@
           <th class="cart-destroy"></th>
         </tr>
       </thead>
-      <tbody>
-        <% @cart_items.each do |cart| %>
+      <% @cart_items.each do |cart| %>
+        <tbody>
           <td><%= cart.item.name %></td>
           <td><%= cart.item.price %></td>
           <td><%= cart.count %></td>
           <td><%= cart.item.price * cart.count %></td>
-          <td><%= link_to "削除する", customer_cart_item(cart.id, cart.item_id), method: :delete, class: "btn btn-danger" %></td>
-        <% end %>
-      </tbody>
+          <td><%= link_to "削除する", customer_cart_item_path(cart.id, cart.item_id), method: :delete, class: "btn btn-danger" %></td>
+        </tbody>
+      <% end %>
     </table>
   </div>
 </div>

@@ -1,12 +1,28 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-md-2"><h3>genres/index</h3></div>
+    <div class="col-md-2"><h3>genres</h3></div>
     <div class="col-md-9 offset-md-1">
-      <div class="card">
+      <div class="card h-100 w-100">
         <div class="row no-gutters">
-          <div class="col-md-"></div>
+          <div class="col-md-5">
+            <%= attachment_image_tag @item, :image_id, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", class: "card-img", alt: "商品イメージ", width: "100%"%>
+          </div>
+          <div class="col-md-4">
+            <div class="card-body">
+              <h4 class="card-title"><%= @item.name %></h4>
+              <p class="card-text"><%= @item.description %></p>
+              <h3>￥<%= @item.price %></h3><p>(税込)</p>
+              <%= form_with model: @cart_item, url: cart_items_path(@cart_item.customer), local: true do |f| %>
+                <% if customer_signed_in? %>
+                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                <% end %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.select :count, [["1個", 1], ["2個", 2], ["3個", 3], ["4個", 4], ["5個", 5]] %>
+                <%= f.submit "カートに追加する", class: "btn btn-success" %>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div class="card"></div>
       </div>
     </div>
   </div>

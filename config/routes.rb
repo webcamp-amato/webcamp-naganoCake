@@ -11,16 +11,14 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resources :customers, only: [:show, :edit, :update] do
-    patch '/leave' => 'customers#leave', as: "leave"
-    get '/confirm' => 'customers#confirm', as: "confirm"
-    resources :cart_items, only: [:create, :index, :update, :destroy]
-    delete '/cart_items' => 'cart_items#all_destroy'
-    post '/orders/confirm' => 'orders#confirm'
-    get '/orders/complete' => 'orders#complete'
-    resources :orders, only: [:create, :index, :show, :new]
-  end
-
+  resources :customers, only: [:show, :edit, :update]
+  patch '/leave' => 'customers#leave', as: "leave"
+  get '/confirm' => 'customers#confirm', as: "confirm"
+  resources :cart_items, only: [:create, :index, :update, :destroy]
+  delete '/cart_items' => 'cart_items#all_destroy'
+  post '/orders/confirm' => 'orders#confirm'
+  get '/orders/complete' => 'orders#complete'
+  resources :orders, only: [:create, :index, :show, :new]
   resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
   resources :items, only: [:index, :show]
   get '/search' => "searches#search", as: "search"

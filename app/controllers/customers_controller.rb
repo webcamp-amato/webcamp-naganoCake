@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
 
   def confirm
   end
-  
+
   private
 
     def customer_params

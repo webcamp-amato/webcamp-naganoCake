@@ -16,3 +16,18 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.item-name {
+  font-size: 13px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.cart-thead th:first-child {
+  width: 45%;
+}
+.cart-thead th:not(:first-child) {
+  width: 14%;
+}

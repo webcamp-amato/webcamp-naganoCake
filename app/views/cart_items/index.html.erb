@@ -1,0 +1,26 @@
+<div class="container my-5">
+  <div class="row">
+
+    <h4>ショッピングカート</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="cart-thead">
+          <th class="cart-name">商品名</th>
+          <th class="cart-price">単価</th>
+          <th class="cart-count">数量</th>
+          <th class="cart-total">小計</th>
+          <th class="cart-destroy"></th>
+        </tr>
+      </thead>
+      <% @cart_items.each do |cart| %>
+        <tbody>
+          <td><%= cart.item.name %></td>
+          <td><%= cart.item.price %></td>
+          <td><%= cart.count %></td>
+          <td><%= cart.item.price * cart.count %></td>
+          <td><%= link_to "削除する", cart_item_path(cart.id, cart.item_id), method: :delete, class: "btn btn-danger" %></td>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

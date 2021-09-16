@@ -12,6 +12,9 @@
               <h4 class="card-title"><%= @item.name %></h4>
               <p class="card-text"><%= @item.description %></p>
               <h3>￥<%= @item.price %></h3><p>(税込)</p>
+              <%= form_with model: @cart_item,  local: true do |f| %>]
+                <%= f.select :count, [[]]
+              <% end %>
             </div>
           </div>
         </div>

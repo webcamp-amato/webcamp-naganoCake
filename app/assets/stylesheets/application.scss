@@ -24,3 +24,10 @@
 .pagination {
   justify-content: center;
 }
+
+.cart-thead th:first-child {
+  width: 45%;
+}
+.cart-thead th:not(:first-child) {
+  width: 14%;
+}

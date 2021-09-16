@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
   }
   devise_for :customers, controllers: {
     sessions:      'customers/sessions',
@@ -13,14 +13,14 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     get '/confirm' => 'customers#confirm', as: "confirm"
-    resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete '/cart_items' => 'cart_items#all_destroy'
-    resources :orders, only: [:create, :index, :show, :new]
-    get '/orders/confirm' => 'orders#confirm'
+    post '/orders/confirm' => 'orders#confirm'
     get '/orders/complete' => 'orders#complete'
+    resources :orders, only: [:create, :index, :show, :new]
   end
 
+  resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
   resources :items, only: [:index, :show]
   get '/search' => "searches#search", as: "search"
 

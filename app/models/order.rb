@@ -5,3 +5,4 @@ class Order < ApplicationRecord
   enum status: [ :waiting, :confirm, :making, :preparing, :shipped]
 
 end
+

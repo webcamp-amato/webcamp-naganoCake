@@ -46,11 +46,26 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # 注文の保存
       @order = Order.new(order_params)
       @order.save
       if @order.invalid?
         render :new
       end
+    # 注文商品の保存
+      @cart_items = current_customer.cart_items.all
+      @cart_items.each do |cart_item|
+        @order_items = @order.order_items.new
+        @order_items.order_id = @order.id
+        @order_items.item_id = cart_item.item.id
+        @order_items.count = cart_item.count
+        @order_items.price = cart_item.item.price
+        @order_items.save
+      end
+
+      # カートアイテムの削除
+      @cart_items.destroy_all
+
       redirect_to orders_complete_path
   end
 

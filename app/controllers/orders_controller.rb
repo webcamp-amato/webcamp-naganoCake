@@ -51,6 +51,8 @@ class OrdersController < ApplicationController
       if @order.invalid?
         render :new
       end
+      
+      @cart_items = @customer.
       redirect_to orders_complete_path
   end
 

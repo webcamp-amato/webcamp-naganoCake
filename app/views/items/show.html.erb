@@ -19,8 +19,8 @@
                   <%= f.hidden_field :customer_id, :value => current_customer.id %>
                 <% end %>
                 <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.select :count, [["1個" => 1], ["2個" => 2], ["3個" => 3], ["4個" => 4], ["5個" => 5]],  placeholder: "個数選択", class: "item-count" %>
-                  <%= f.submit "カートに追加する", class: "btn btn-success" %>
+                <%= f.select :count, [["1個", 1], ["2個", 2], ["3個", 3], ["4個", 4], ["5個", 5]], class: "item-count" %>
+                <%= f.submit "カートに追加する", class: "btn btn-success" %>
               <% end %>
             </div>
           </div>

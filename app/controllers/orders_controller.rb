@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order.customer_id = @customer.id
     @new_place = DeliveryPlace.new
     @new_place.customer_id = @customer.id
-    @order.payment_method = params[:payment_method].to_i
+    @order.payment_method = params[:payment_method]
     @order.postage = 800
     @cart_items = @customer.cart_items
     @sum = 0
@@ -63,6 +63,6 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:total_price, :payment_method, :postage, :place_option, :order_place, :postcode, :address, :addressee)
+      params.require(:order).permit(:customer_id, :total_price, :payment_method, :postage, :place_option, :order_place, :postcode, :address, :addressee)
     end
 end

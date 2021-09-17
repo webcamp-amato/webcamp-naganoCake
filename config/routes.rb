@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   namespace :admin do
-    resources :admins, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
     resources :orders, only: [:show, :index, :update]

@@ -1,3 +1,64 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
-<h1>test</h1>
+<div class="container">
+
+  <h2>注文情報確認</h2>
+
+  <table>
+      <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+      </tr>
+
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+          <td>
+            <!--画像はまだ-->
+
+            <%= cart_item.item.name %>
+          </td>
+          <!--値段の計算わからない-->
+          <td><%= (cart_item.item.price * 1.1).round %></td>
+          <td><%= cart_item.count %></td>
+          <!--小計の計算-->
+          <% subtotal = (cart_item.item.price * 1.1).round * cart_item.count %>
+          <td><%= subtotal %></td>
+      </tr>
+      <% @sum += subtotal %>
+    <% end %>
+  </table>
+
+  <table>
+    <tr>
+      <th>送料</th>
+      <td><%= @order.postage %></td>
+    </tr>
+    <tr>
+      <th>商品合計</th>
+      <td><%= @sum %></td>
+    </tr>
+    <tr>
+      <th>請求金額</th>
+      <% @order.total_price = @order.postage + @sum %>
+      <td><%= @order.total_price %></td>
+    </tr>
+  </table>
+
+  <span>支払方法　</span><%= @order.payment_method %>
+  <br>
+  <span>お届け先　</span>〒<%= @order.postcode %><%= @order.address %><%= @order.addressee %>
+</div>
+
+
+<!--ここで文字列-->
+<%= form_for @order, method: :post, url: orders_path do |form| %>
+  <%= form.hidden_field :customer_id %>
+  <%= form.hidden_field :total_price %>
+  <%= form.hidden_field :payment_method %>
+  <%= form.hidden_field :postage %>
+  <%= form.hidden_field :addressee %>
+  <%= form.hidden_field :postcode %>
+  <%= form.hidden_field :address %>
+
+  <%= form.submit '注文を確定する' %>
+<% end %>

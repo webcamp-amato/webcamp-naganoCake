@@ -1,7 +1,7 @@
 <div class="container">
 
 <h2>注文情報入力</h2>
-<%= form_with model: @order, url: customer_orders_confirm_path, method: :post, local: true do |f| %>
+<%= form_with model: @order, url:orders_confirm_path, method: :post, local: true do |f| %>
 
   <%= f.label :payment_method, '支払方法' %>
   <br>

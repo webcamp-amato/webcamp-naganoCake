@@ -46,17 +46,21 @@ class OrdersController < ApplicationController
   end
 
   def create
-      @order = @Order.new(order_params)
+      @order = Order.new(order_params)
       @order.save
-      redirect_to customer_orders_complete_path
+      if @order.invalid?
+        render :new
+      end
+      redirect_to orders_complete_path
   end
 
   def complete
   end
+  
 
 
   private
     def order_params
-      params.require(:order).permit(:payment_method, :place_option,:order_place, :postcode, :address, :addressee)
+      params.require(:order).permit(:total_price, :payment_method, :postage, :place_option, :order_place, :postcode, :address, :addressee)
     end
 end

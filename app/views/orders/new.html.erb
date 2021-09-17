@@ -7,11 +7,11 @@
   <br>
 
   <div class="ml-4">
-  <%= f.radio_button :payment_method, 0, checked: "checked" %>
-  <%= f.label :クレジットカード %>
+  <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+  <%= f.label :payment_method, "クレジットカード" %>
   <br>
-  <%= f.radio_button :payment_method, 1 %>
-  <%= f.label :銀行振込 %>
+  <%= f.radio_button :payment_method, :銀行振込 %>
+  <%= f.label :payment_method, "銀行振込" %>
   <br>
   </div>
 

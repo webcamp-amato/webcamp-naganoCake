@@ -1,7 +1,7 @@
 <div class="container">
 
   <h2>注文情報確認</h2>
-  
+
   <table>
       <tr>
           <th>商品名</th>
@@ -49,6 +49,8 @@
   <span>お届け先　</span>〒<%= @order.postcode %><%= @order.address %><%= @order.addressee %>
 </div>
 
+
+<!--ここで文字列-->
 <%= form_for @order, method: :post, url: orders_path do |form| %>
   <%= form.hidden_field :customer_id %>
   <%= form.hidden_field :total_price %>

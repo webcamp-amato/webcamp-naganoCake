@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
 
   resources :customers, only: [:show, :edit, :update, :destroy]
+  patch '/leave' => 'customers#leave', as: "leave"
   get '/confirm' => 'customers#confirm', as: "confirm"
   resources :cart_items, only: [:create, :index, :update, :destroy] do
     collection do

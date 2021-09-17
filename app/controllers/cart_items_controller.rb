@@ -3,12 +3,12 @@ class CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
+    @sum = 0
   end
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       @count = @cart_item.count + cart_item.count

@@ -31,3 +31,35 @@
 .cart-thead th:not(:first-child) {
   width: 14%;
 }
+
+#top {
+    width: 100%;
+    height: 800px;
+    text-align: center;
+    color: white;
+    background-image: url(cake-top.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.top-message {
+    padding-top: 300px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+}
+
+#about {
+    width: 100%;
+    height: 650px;
+    text-align: center;
+    color: white;
+    background-image: url(cake-about.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.about-message {
+    padding-top: 200px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+}

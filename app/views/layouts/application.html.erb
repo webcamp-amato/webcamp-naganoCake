@@ -4,7 +4,6 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/6f0d38cdd3.js" crossorigin="anonymous"></script>
@@ -16,7 +15,11 @@
       <%= render "layouts/header" %>
     </div>
     <%#フラッシュメッセージ%>
-    <p id="notice"><%= flash[:notice] %></p>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= yield %>
     <div class="footer">
       <%= render "layouts/footer" %>

@@ -1,0 +1,34 @@
+<div class="container">
+  <%= form_with model: [:admin, @item], local: true do |f| %>
+    <div class="form-group row">
+      <p>商品画像</p>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="form-group row">
+      <p>商品名</p>
+      <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
+    </div>
+    <div class="form-group row">
+      <p>商品説明</p>
+      <%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control" %>
+    </div>
+    <div class="form-group row">
+      <p>ジャンル</p>
+      <%= f.select :genre_id, [["ケーキ", 1],["焼き菓子", 2], ["プリン", 3], ["キャンディ", 4]], include_blank: "--選択してください--", class: "form-control" %>
+    </div>
+    <div class="form-group row">
+      <p>税抜価格</p>
+      <%= f.text_field :price, placeholder: 1000, class: "form-control" %>
+    </div>
+    <div class="form-group row">
+      <p>商品ステータス</p>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "販売中", value: true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "販売停止中", value: false %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "変更を保存", class: "btn btn-success mx-auto" %>
+    </div>
+  <% end %>
+</div>

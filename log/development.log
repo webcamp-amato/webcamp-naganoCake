@@ -12766,3 +12766,9 @@ Processing by ItemsController#show as HTML
 Completed 200 OK in 162ms (Views: 150.9ms | ActiveRecord: 0.2ms)
 
 
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" ORDER BY "customers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCartItem Load (0.1ms)[0m  [1m[34mSELECT  "cart_items".* FROM "cart_items" WHERE "cart_items"."customer_id" = ? LIMIT ?[0m  [["customer_id", 1], ["LIMIT", 11]]
+  [1m[36mCartItem Load (0.2ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."customer_id" = ?[0m  [["customer_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCartItem Destroy (1.2ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = ?[0m  [["id", 24]]
+  [1m[35m (20.6ms)[0m  [1m[36mcommit transaction[0m

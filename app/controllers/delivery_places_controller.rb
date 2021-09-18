@@ -15,7 +15,6 @@ class DeliveryPlacesController < ApplicationController
     @delively_place.customer_id = current_customer.id
     @delively_place.save
     @delivery_places = current_customer.delivery_places #index遷移用
-    redirect_to delivery_places_path
   end
 
   def update
@@ -28,7 +27,6 @@ class DeliveryPlacesController < ApplicationController
     @delivery_place = DeliveryPlace.find(params[:id])
     @delivery_place.destroy
     @delivery_places = current_customer.delivery_places #index遷移用
-    redirect_to delivery_places_path
   end
 
   private

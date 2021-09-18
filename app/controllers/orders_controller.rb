@@ -5,6 +5,10 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
+    @sum = 0
+    @customer = current_customer
   end
 
 

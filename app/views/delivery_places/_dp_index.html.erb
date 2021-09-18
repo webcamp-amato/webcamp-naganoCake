@@ -1,0 +1,33 @@
+<% if delivery_places.present? %>
+  <table class="table table-hover table-striped col-12">
+    <thead>
+      <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% delivery_places.each do |delivery_place| %>
+        <tr>
+          <td>
+            <%= delivery_place.postcode %>
+          </td>
+          <td class="text-left">
+            <%= delivery_place.address %>
+          </td>
+          <td class="text-left">
+            <%= delivery_place.addressee %>
+          </td>
+          <td>
+            <%= link_to "編集する", edit_delivery_place_path(delivery_place), class: "btn-sm btn-primary" %>
+          </td>
+          <td>
+            <%= link_to "削除する", delivery_place_path(delivery_place), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, remote: true, class: "btn-sm btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

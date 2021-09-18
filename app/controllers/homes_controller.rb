@@ -1,9 +1,9 @@
 class HomesController < ApplicationController
   def top
-    @items = Item.all.order(created_at: :asc)
+     @items = Item.all.page(params[:page]).per(4)
   end
 
   def about
   end
-  
+
 end

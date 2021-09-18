@@ -1,15 +1,15 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row text-center col-12">
     <div class="col-12">
-      <i class="fas fa-exclamation-triangle"></i><strong>本当に退会しますか？</strong><br><br>
-    <div></div>
+      <h3 class="text-danger"><i class="fas fa-exclamation-triangle"></i>本当に退会しますか？<i class="fas fa-exclamation-triangle"></i></h3><br><br>
+    </div>
     <div class="col-12">
       退会すると会員情報登録や<br>
       これまでの購入履歴が閲覧できなくなります。<br>
       <br>
       退会する場合は,「退会する」をクリックしてください。<br><br>
     </div>
-    <div class="col-12">
+    <div class="col-12 mb-5">
       <%= link_to "退会しない", customer_path(current_customer), class: 'btn btn-primary' %>
       <%= link_to "退会する", leave_path(current_customer), data: {confirm: "本当に退会してもよろしいですか？"}, method: :patch, class: "btn btn-danger" %>
     </div>

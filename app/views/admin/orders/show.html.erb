@@ -24,17 +24,24 @@
     <th>注文ステータス</th>
     <td>
       <!--ステータス表記がわからない-->
+      <%= form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %>
+       <%= f.label :status, "選択してください " %>
+      <br>
+
+      <%= f.select :status, Order.statuses.keys.to_a %>
+      <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+      <% end %>
     </td>
   </tr>
 </table>
 
-<table>
+<table border="1">
   <tr>
     <th>商品名</th>
     <th>単価(税込)</th>
     <th>数量</th>
     <th>小計</th>
-    <th>制作ステータス</th>
+    <th>製作ステータス</th>
   </tr>
   <% @order_items.each do |order_item| %>
   <tr>
@@ -46,12 +53,19 @@
      <% @sum += subtotal %>
     <td>
       <!--ステータス表記がわからない-->
+       <%= form_with model: order_item, url:admin_order_item_path(order_item.id), method: :patch, local: true do |f| %>
+       <%= f.label :status, "選択してください" %>
+      <br>
+
+      <%= f.select :status, OrderItem.statuses.keys.to_a %>
+      <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+      <% end %>
     </td>
   </tr>
   <% end %>
 </table>
 
-<table>
+<table border="1">
   <tr>
     <th>商品合計</th>
     <td><%= @sum %>円</td>

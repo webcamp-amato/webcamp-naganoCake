@@ -32,7 +32,7 @@
         <%= f.label :order_place, "登録済住所から選択" %>
         <br>
         <div class="ml-3">
-          <%= f.collection_select :order_place, @customer.delivery_places, :id, :address, :include_blank => "選択してください" %>
+          <%= f.collection_select :order_place, @customer.delivery_places, :id, :full_place, :include_blank => "選択してください" %>
         </div>
     </div>
 

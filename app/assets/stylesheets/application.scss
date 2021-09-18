@@ -34,7 +34,7 @@
 
 #top {
     width: 100%;
-    height: 800px;
+    height: 1000px;
     text-align: center;
     color: white;
     background-image: url(cake-top.jpeg);
@@ -43,9 +43,10 @@
 }
 
 .top-message {
-    padding-top: 300px;
+    padding-top: 200px;
     font-family: 'Raleway', sans-serif;
     font-size: 28px;
+    color: black;
 }
 
 #about {
@@ -62,4 +63,32 @@
     padding-top: 200px;
     font-family: 'Raleway', sans-serif;
     font-size: 28px;
+}
+
+.carousel-item {
+  height: 600px;
+}
+
+.carousel-caption {
+    padding-bottom: 250px;
+}
+
+#login {
+    width: 100%;
+    height: 550px;
+    text-align: center;
+    color: white;
+    background-image: url(cake-login.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#signin {
+    width: 100%;
+    height: 750px;
+    text-align: center;
+    color: white;
+    background-image: url(cake-signin.jpg);
+    background-size: cover;
+    background-position: center;
 }

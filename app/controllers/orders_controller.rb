@@ -2,16 +2,22 @@ class OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
+    @orders = current_customer.orders.page(params[:page]).per(10)
+
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
+    @sum = 0
+    @customer = current_customer
   end
 
 
   def new
     @customer = current_customer
   end
-
+  
   def confirm
     @order = Order.new
     @customer = current_customer
@@ -71,7 +77,6 @@ class OrdersController < ApplicationController
 
   def complete
   end
-
 
 
   private

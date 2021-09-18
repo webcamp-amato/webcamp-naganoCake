@@ -1,5 +1,7 @@
-<h4>ショッピングカート</h4>
-<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+<div class="row">
+  <h4>ショッピングカート</h4>
+  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+</div>
 <table class="table table-bordered">
   <thead>
     <tr class="cart-thead">
@@ -12,7 +14,10 @@
   </thead>
   <% cart_items.each do |cart| %>
     <tbody>
-      <td><%= cart.item.name %></td>
+      <td>
+        <%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "20%"%>
+        <%= cart.item.name %>
+      </td>
       <td><%= cart.item.price %></td>
       <td>
         <%= form_with model: cart, local: true do |f| %>
@@ -39,15 +44,15 @@
   <div class="">
     <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
   </div>
-  <div class="">
+  <div class="right">
     <table class="table table-bordered">
       <tr>
-        <th>合計金額</th>
+        <th align="right">合計金額</th>
         <th><%= @sum %></th>
       </tr>
     </table>
   </div>
 </div>
 <div lcass="row">
-  <%= link_to "情報入力に進む", new_order_path(current_customer), class: "btn btn-success ml-3" %>
+  <%= link_to "情報入力に進む", new_order_path(current_customer), class: "btn btn-success text-center" %>
 </div>

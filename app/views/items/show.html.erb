@@ -1,13 +1,13 @@
 <div class="container my-5">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2 offset-md-1">
       <%= render 'genres/index', genres: @genres %>
     </div>
     <div class="col-md-8 offset-md-1">
       <div class="card h-100 w-100">
         <div class="row no-gutters">
           <div class="col-md-5">
-            <%= attachment_image_tag @item, :image_id, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", class: "card-img", alt: "商品イメージ", width: "100%"%>
+            <%= attachment_image_tag @item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", class: "card-img", alt: "商品イメージ", width: "100%"%>
           </div>
           <div class="col-md-4">
             <div class="card-body">

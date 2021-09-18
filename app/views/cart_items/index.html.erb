@@ -1,10 +1,12 @@
 <div class="container my-5">
-  <div class="row">
-    <% if current_customer.cart_items.blank? %>
-      <h3>カートに商品はありません</h3><br/>
-      <%= link_to "商品一覧へ", items_path, class: "btn btn-primary" %>
-    <% else %>
-      <%= render 'cart_items/index', cart_items: @cart_items %>
-    <% end %>
-  </div>
+  <% if current_customer.cart_items.blank? %>
+    <div class="row">
+      <h3 class="mx-auto">カートに商品はありません</h3>
+    </div>
+    <div class="row">
+      <%= link_to "商品一覧へ", items_path, class: "btn btn-primary mx-auto my-4" %>
+    </div>
+  <% else %>
+    <%= render 'cart_items/index', cart_items: @cart_items %>
+  <% end %>
 </div>

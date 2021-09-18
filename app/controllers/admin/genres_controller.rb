@@ -7,6 +7,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    @genres = Genre.all.page(params[:page]).per(10)
     @genre = Genre.new(genre_params)
     if @genre.save
       flash[:notice] = "ジャンルを登録しました。"

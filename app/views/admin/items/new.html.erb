@@ -1,34 +1,38 @@
 <div class="container">
-  <%= form_with model: [:admin, @item], local: true do |f| %>
-    <div class="form-group row">
-      <p>商品画像</p>
-      <%= f.attachment_field :image %>
+  <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+    <%= form_with model: [:admin, @item], local: true do |f| %>
+    <div class="form-group row mx-auto">
+      <p class="col-md-3">商品画像</p>
+      <div class="col-md-9">
+        <%= f.attachment_field :image %>
+      </div>
     </div>
-    <div class="form-group row">
-      <p>商品名</p>
-      <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
+    <div class="form-group row mx-auto">
+      <p class="col-md-3">商品名</p>
+      <div class="col-md-9"><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></div>
     </div>
-    <div class="form-group row">
-      <p>商品説明</p>
-      <%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control" %>
+    <div class="form-group row mx-auto">
+      <p class="col-md-3">商品説明</p>
+      <div class="col-md-9"><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control" %></div>
     </div>
-    <div class="form-group row">
-      <p>ジャンル</p>
-      <%= f.select :genre_id, [["ケーキ", 1],["焼き菓子", 2], ["プリン", 3], ["キャンディ", 4]], include_blank: "--選択してください--", class: "form-control" %>
+    <div class="form-group row mx-auto">
+      <p class="col-md-3">ジャンル</p>
+      <div class="col-md-9"><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></div>
     </div>
-    <div class="form-group row">
-      <p>税抜価格</p>
-      <%= f.text_field :price, placeholder: 1000, class: "form-control" %>
+    <div class="form-group row mx-auto">
+      <p class="col-md-3">税抜価格</p>
+      <div class="col-md-9"><%= f.text_field :price, placeholder: 1000, class: "form-control" %></div>
     </div>
-    <div class="form-group row">
-      <p>商品ステータス</p>
+    <div class="form-group row mx-auto">
+      <p class="col-md-4">商品ステータス</p>
       <%= f.radio_button :is_active, true %>
       <%= f.label :is_active, "販売中", value: true %>
       <%= f.radio_button :is_active, false %>
       <%= f.label :is_active, "販売停止中", value: false %>
     </div>
-    <div class="form-group">
-      <%= f.submit "新規登録", class: "btn btn-success mx-auto" %>
+    <div class="form-group row mx-auto">
+      <%= f.submit "新規登録", class: "btn btn-success" %>
     </div>
   <% end %>
+  </div>
 </div>

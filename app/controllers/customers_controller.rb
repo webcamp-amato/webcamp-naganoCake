@@ -18,7 +18,8 @@ class CustomersController < ApplicationController
   def leave
     @customer = current_customer
     @customer.update(is_deleted: true)
-    reset_sessionredirect_to root_path
+    reset_session
+    redirect_to root_path
   end
 
   def confirm

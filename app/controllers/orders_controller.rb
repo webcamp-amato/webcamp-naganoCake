@@ -49,6 +49,14 @@ class OrdersController < ApplicationController
     end
     # binding.pry
 
+     # if request.path_info != session[:ref]
+    #   session[:ref] = request.path_info
+  # 通常時の処理
+    # else
+  # reload時の処理
+    #   render 'new'
+    # end
+
   end
 
   def create
@@ -76,6 +84,11 @@ class OrdersController < ApplicationController
   end
 
   def complete
+  end
+
+
+  def error
+
   end
 
 

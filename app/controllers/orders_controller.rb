@@ -6,6 +6,13 @@ class OrdersController < ApplicationController
 
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
+    @sum = 0
+    @customer = current_customer
+  end
+
 
   def new
     @customer = current_customer
@@ -42,20 +49,14 @@ class OrdersController < ApplicationController
     end
     # binding.pry
 
-    # if request.path_info != session[:ref]
+     # if request.path_info != session[:ref]
     #   session[:ref] = request.path_info
   # 通常時の処理
     # else
   # reload時の処理
     #   render 'new'
     # end
-  end
 
-  def show
-    @order = Order.find(params[:id])
-    @order_items = OrderItem.where(order_id: params[:id])
-    @sum = 0
-    @customer = current_customer
   end
 
   def create
@@ -84,9 +85,10 @@ class OrdersController < ApplicationController
 
   def complete
   end
-  
+
+
   def error
-    
+
   end
 
 

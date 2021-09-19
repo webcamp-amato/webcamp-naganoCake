@@ -39,19 +39,19 @@
 
 #top {
     width: 100%;
-    height: 1000px;
+    height: 1600;
     text-align: center;
     color: white;
-    background-image: url(cake-top.jpeg);
+    background-image: url(cake-top.jpg);
     background-size: cover;
     background-position: center;
+    margin-bottom: 0;
 }
 
 .top-message {
-    padding-top: 200px;
     font-family: 'Raleway', sans-serif;
     font-size: 28px;
-    color: black;
+    color: white;
 }
 
 #about {
@@ -96,4 +96,9 @@
     background-image: url(cake-signin.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.navbar-dark .navbar-toggler-icon{
+  /* 三本線 */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }

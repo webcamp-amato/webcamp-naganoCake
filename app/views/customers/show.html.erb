@@ -10,11 +10,11 @@
   				<tbody>
   					<tr>
   						<td class="info col-xs-2">氏名</td>
-  						<td class="text-left"><%= @customer.last_name %><%= @customer.first_name %></td>
+  						<td class="text-left"><%= full_name(current_customer) %></td>
   					</tr>
   					<tr>
   						<td class="info">カナ</td>
-  						<td class="text-left"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+  						<td class="text-left"><%= full_name_kana(current_customer) %></td>
   					</tr>
   					<tr>
   						<td class="info">郵便番号</td>

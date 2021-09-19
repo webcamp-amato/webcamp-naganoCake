@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
-    @cart_item = current_customer.cart_items.new
+    
+    if customer_signed_in?
+      @cart_item = current_customer.cart_items.new
+    end
   end
 end

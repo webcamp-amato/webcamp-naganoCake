@@ -16,15 +16,19 @@
               <div class="row">
                 <h3 class="mr-1">￥<%= @item.price %></h3><p>(税込)</p>
               </div>
-              <%= form_with model: @cart_item, url: cart_items_path(@cart_item.customer), local: true do |f| %>
-                <% if customer_signed_in? %>
-                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              
+              <% if customer_signed_in? %>
+                <%= form_with model: @cart_item, url: cart_items_path(@cart_item.customer), local: true do |f| %>
+                  <% if customer_signed_in? %>
+                    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                  <% end %>
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <% number = (1..100).to_a %>
+                  <%= f.select :count, number, class: "item-count" %>
+                  <%= f.submit "カートに追加する", class: "btn btn-success" %>
                 <% end %>
-                <%= f.hidden_field :item_id, :value => @item.id %>
-                <% number = (1..100).to_a %>
-                <%= f.select :count, number, class: "item-count" %>
-                <%= f.submit "カートに追加する", class: "btn btn-success" %>
               <% end %>
+              
             </div>
           </div>
         </div>

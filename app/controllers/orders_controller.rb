@@ -7,13 +7,10 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if Order.find(params[:id]) == confirm
-    else
-      @order = Order.find(params[:id])
-      @order_items = OrderItem.where(order_id: params[:id])
-      @sum = 0
-      @customer = current_customer
-    end
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
+    @sum = 0
+    @customer = current_customer
   end
 
 

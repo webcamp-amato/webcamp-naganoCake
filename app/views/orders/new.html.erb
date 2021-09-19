@@ -39,17 +39,19 @@
     <%= f.radio_button :place_option, 2 %>
       <%= f.label :order_place, "新しいお届け先" %>
       <br>
-      <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-      <%= f.text_field :postcode %>
-      <br>
+      <div class="form-group">
 
-      <%= f.label :address, "住所" %>
-      <%= f.text_field :address %>
-      <br>
-
-      <%= f.label :addressee, "宛名" %>
-      <%= f.text_field :addressee %>
-      <br>
+        <%= f.label :postcode, "郵便番号(ハイフンなし)", class: 'col-md-4'%>
+        <%= f.text_field :postcode, class: 'col-md-4' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address, "住所", class: 'col-md-4' %>
+        <%= f.text_field :address, class: 'col-md-4' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :addressee, "宛名", class: 'col-md-4' %>
+        <%= f.text_field :addressee, class: 'col-md-4' %>
+      </div>
   </div>
 
   <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>

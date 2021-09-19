@@ -2,7 +2,7 @@
 
   <h2>注文情報確認</h2>
 
-  <table border="1">
+  <table class="table table-bordered">
       <tr>
           <th>商品名</th>
           <th>単価(税込)</th>
@@ -27,7 +27,7 @@
     <% end %>
   </table>
 
-  <table border="1">
+  <table class="table table-bordered">
     <tr>
       <th>送料</th>
       <td><%= @order.postage %></td>
@@ -49,7 +49,6 @@
 </div>
 
 
-<!--ここで文字列-->
 <%= form_for @order, method: :post, url: orders_path do |form| %>
   <%= form.hidden_field :customer_id %>
   <%= form.hidden_field :total_price %>

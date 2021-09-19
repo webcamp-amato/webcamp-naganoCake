@@ -11,6 +11,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+
+    # case resource
+    # when Admin
+    #   new_admin_session_path
+    # end
+
+    # case resource
+    # when Admin
+    #   new_admin_session_path
+    # when Customer
+    #   root_path
+    # end
+
+    if resource_or_scope == :admin
+      new_admin_session_path
+    end
+
+  end
+
   protected
 
   # 新規登録の保存機能

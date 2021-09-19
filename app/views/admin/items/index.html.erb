@@ -1,0 +1,35 @@
+<div class="container col-lg-10 col-xl-8 my-4">
+  <table class="table">
+    <div class="row">
+      <h4 class="ml-3 mb-3">商品一覧</h4>
+      <%= link_to "", new_admin_item_path, class: "fas fa-plus new-item" %>
+    </div>
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td>
+            <%= link_to item.name, admin_item_path(item) %>
+          </td>
+          <td><%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <% if item.is_active == true %>
+            <td>販売中</td>
+          <% else %>
+            <td>販売停止中</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @items %>
+</div>

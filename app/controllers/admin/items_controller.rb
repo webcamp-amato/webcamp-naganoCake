@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def show
@@ -15,8 +15,13 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    render :show
+    @item.price.to_i
+    if @item.save
+      flash[:notice] = "商品を登録しました。"
+      redirect_to admin_item_url(@item)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,8 +29,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(item_params)
-    @item.update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "商品情報を更新しました。"
+      redirect_to admin_item_url(@item)
+    else
+      render :edit
+    end
   end
 
   private

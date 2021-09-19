@@ -1,7 +1,40 @@
-<div>
-　ながのCAKEは全国発送可能なケーキ屋さんです。<br>
-　お子様からお年寄りまでお召し上がりいただけるよう、<br>
-  様々なバリエーションをご用意しております。<br>
-  また、全国発送可能ですので、「いつ」でも「どこ」でもご注文していただけます。<br>
-  ぜひご注文下さい。
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "cake-about1.jpeg", class:"d-block w-100", alt:"First slide" %>
+      <div class="carousel-caption d-none d-md-block">
+        <h1>About</h1>
+        <p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "cake-about2.jpeg", class:"d-block w-100", alt:"Second slide" %>
+      <div class="carousel-caption d-none d-md-block">
+        <h1>About</h1>
+        <p>お子様からお年寄りまでお召し上がりいただけるよう、様々なバリエーションをご用意しております。</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "cake-about3.jpeg", class:"d-block w-100", alt:"Third slide" %>
+      <div class="carousel-caption d-none d-md-block">
+        <h1>About</h1>
+        <p>
+          また、全国発送可能ですので、「いつ」でも「どこ」でもご注文していただけます。ぜひご注文下さい。
+        </p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

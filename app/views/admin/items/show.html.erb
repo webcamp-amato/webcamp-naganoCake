@@ -1,0 +1,37 @@
+<div class="container my-5">
+  <h4 class="mb-4">商品詳細</h4>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <%= attachment_image_tag @item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", size: "300x200"%>
+    </div>
+    <div class="col-md-7 offset-md-1">
+      <div class="row mx-auto">
+        <p class="col-4">商品名</p>
+        <strong class="col-8"><%= @item.name %></strong>
+      </div>
+      <div class="row mx-auto">
+        <p class="col-4">商品説明</p>
+        <strong class="col-8"><%= @item.description %></strong>
+      </div>
+      <div class="row mx-auto">
+        <p class="col-4">ジャンル</p>
+        <strong class="col-8"><%= @item.genre.name %></strong>
+      </div>
+      <div class="row mx-auto">
+        <p class="col-4">税込価格<br/>(税抜価格)</p>
+        <p class="col-8"><strong><%= (@item.price * 1.1).round %> (<%= @item.price %>)</strong>円</p>
+      </div>
+      <div class="row mx-auto">
+        <p class="col-md-4">販売ステータス</p>
+        <% if @item.is_active == true %>
+          <strong class="active col-md-8">販売中</strong>
+        <% else %>
+          <strong class="n-active col-md-8">販売停止中</strong>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row mx-auto">
+    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success mx-auto" %>
+  </div>
+</div>

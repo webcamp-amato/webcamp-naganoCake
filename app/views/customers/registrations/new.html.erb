@@ -1,66 +1,72 @@
+<section id="signin">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "customers/shared/error_messages", resource: resource %>
+    <div class="container pt-5 text-dark">
+      <div class="row justify-content-center border rounded bg-light col-12">
+        <div class="text-center col-12">
+          <h2 class="field form-group mt-3 bg-success text-light"><i class="fas fa-user-plus"></i> 新規会員登録</h2>
+        </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"名前", class: "col-sm-2 control-label" %>
+          <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
+          <%= f.text_field :last_name, autofocus: true, class: "col-sm-3 form-control" %>
+          <%= f.label :"(名)", class: "col-sm-1 control-label" %>
+          <%= f.text_field :first_name, autofocus: true, class: "col-sm-3 form-control" %>
+        </div>
 
+        <div class="form-inline form-group col-12">
+          <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
+          <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
+          <%= f.text_field :last_name_kana, autofocus: true, class: "col-sm-3 form-control" %>
+          <%= f.label :"(名)", class: "col-sm-1 control-label" %>
+          <%= f.text_field :first_name_kana, autofocus: true, class: "col-sm-3 form-control" %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-  <div class="container">
-    <div class="row">
-      <h2>新規会員登録</h2>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"メールアドレス", class: "col-3 control-label" %>
+          <%= f.text_field :email, class: "col-7 form-control" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"名前", class: "col-sm-2 control-label" %>
-        <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :last_name, autofocus: true, class: "col-sm-3 form-control-static" %>
-        <%= f.label :"(名)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :first_name, autofocus: true, class: "col-sm-3 form-control-static" %>
-      </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"郵便番号(ハイフンなし)", class: "col-3 control-label"  %>
+          <%= f.text_field :postcode, autofocus: true, class: "col-3 form-control" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
-        <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :last_name_kana, autofocus: true, class: "col-sm-3 form-control-static" %>
-        <%= f.label :"(名)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :first_name_kana, autofocus: true, class: "col-sm-3 form-control-static" %>
-      </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"住所", class: "col-3 control-label" %>
+          <%= f.text_field :address, autofocus: true, class: "col-7 form-control" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"メールアドレス", class: "col-3 control-label" %>
-        <%= f.text_field :email, class: "col-7 form-control-static" %>
-      </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"電話番号(ハイフンなし)", class: "col-3 control-label" %>
+          <%= f.text_field :phone_number, autofocus: true, class: "col-3 form-control" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"郵便番号(ハイフンなし)", class: "col-3 control-label"  %>
-        <%= f.text_field :postcode, autofocus: true, class: "col-3 form-control-static" %>
-      </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"パスワード", class: "col-2 control-label" %>
+          <% if @minimum_password_length %>
+          <span>(<%= @minimum_password_length %> 文字以上 )</span>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "col-3 form-control" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"住所", class: "col-3 control-label" %>
-        <%= f.text_field :address, autofocus: true, class: "col-7 form-control-static" %>
-      </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :"パスワード（確認用）", class: "col-3 control-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-3 form-control" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"電話番号(ハイフンなし)", class: "col-3 control-label" %>
-        <%= f.text_field :phone_number, autofocus: true, class: "col-3 form-control-static" %>
-      </div>
+        <div class="form-inline form-group col-12">
+          <%= f.label :" ", class: "col-3 control-label" %>
+          <%= f.submit "新規登録", class:"btn btn-success col-2" %>
+        </div>
 
-      <div class="field form-group col-12">
-        <%= f.label :"パスワード", class: "col-2 control-label" %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> 文字以上)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-3 form-control-static" %>
-      </div>
-
-      <div class="field form-group col-12">
-        <%= f.label :"パスワード（確認用）", class: "col-3 control-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-3 form-control-static" %>
-      </div>
-
-      <div class="field form-group col-12">
-        <%= f.label :" ", class: "col-3 control-label" %>
-        <%= f.submit "新規登録", class:"btn btn-success col-2" %>
+        <div class="field form-group col-12 pt-3 border-top border-primary">
+          <h4>すでに登録済みの方</h4>
+          <div>
+            <%= link_to " こちら", new_customer_session_path, class:"col-3" %> からログインしてください。
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+  <% end %>
+</section>

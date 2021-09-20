@@ -1,10 +1,21 @@
 # README
 
-ながのケーキ（架空の洋菓子店）　ECサイト
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ながのケーキ（架空の洋菓子店）　ECサイト
 
-Things you may want to cover:
+DMM WEBCAMPのチーム開発課題です。
+架空の洋菓子店、「ながのCAKE」の商品を通販するためのECサイトを作成。
+
+# 言語とフレームワーク
+
+Ruby2.6.3
+
+Rails5.2.5
+
+HTML5
+
+CSS3
+
+JQuery
 
 * Ruby version
 

@@ -1,13 +1,13 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <%=  %>
-      <%= link_to image_tag("logo.png", alt:"ロゴ", width: '50%', height: '50%'), root_path, class:"col-2" %>
+      <%= link_to image_tag("logo.png", alt:"ロゴ", width: '125%', height: '1250%'), root_path, class:"col-2" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="nav navbar navbar-expand-lg navbar-light navbar-nav ml-auto">
+        <ul class="nav navbar navbar-expand-lg navbar-light text-light navbar-nav ml-auto">
           <!--顧客ログイン時 -->
           <% if customer_signed_in? %>
             <li class="header-name nav-link text-dark">

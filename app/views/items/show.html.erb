@@ -14,21 +14,21 @@
               <h4 class="card-title"><%= @item.name %></h4>
               <p class="card-text"><%= @item.description %></p>
               <div class="row">
-                <h3 class="mr-1">￥<%= @item.price %></h3><p>(税込)</p>
+                <h3 class="mr-1">￥<%= @item.price.to_s(:delimited) %></h3><p>(税込)</p>
               </div>
-              
+
               <% if customer_signed_in? %>
                 <%= form_with model: @cart_item, url: cart_items_path(@cart_item.customer), local: true do |f| %>
                   <% if customer_signed_in? %>
                     <%= f.hidden_field :customer_id, :value => current_customer.id %>
                   <% end %>
                   <%= f.hidden_field :item_id, :value => @item.id %>
-                  <% number = (1..100).to_a %>
+                  <% number = (1..99).to_a %>
                   <%= f.select :count, number, class: "item-count" %>
                   <%= f.submit "カートに追加する", class: "btn btn-success" %>
                 <% end %>
               <% end %>
-              
+
             </div>
           </div>
         </div>

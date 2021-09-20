@@ -1,4 +1,4 @@
-  <table border="1">
+  <table class="table table-hover table-borderless">
     <tr>
       <th>注文日</th>
       <th>配送先</th>
@@ -30,6 +30,47 @@
     </tr>
     <% end %>
   </table>
-  
+  <table class="table table-hover">
+    <% orders.each do |order| %>
+      <tr>
+      	<th class="info col-2">注文日</th>
+      	<td class="text-left">
+      	  <%= order.created_at.strftime('%Y/%m/%d') %>
+      	</td>
+      </tr>
+      <tr>
+      	<th class="info col-2">配送先</th>
+      	<td class="text-left">
+      	  〒<%= order.postcode %><br>
+          <%= order.address %><br>
+          <%= order.addressee %>
+      	</td>
+      </tr>
+      <tr>
+      	<th class="info col-2">注文商品</th>
+      	<td class="text-left">
+      	  <% order.order_items.each do |order_item| %>
+          <%= order_item.item.name %><br>
+          <% end %>
+      	 </td>
+      </tr>
+      <tr>
+      	<th class="info col-2">支払金額</th>
+      	<td class="text-left"><%= order.total_price %></td>
+      </tr>
+      <tr>
+      	<th class="info col-2">ステータス</th>
+      	<td class="text-left"><%= order.status %></td>
+      </tr>
+      <tr>
+      	<th class="info col-2">注文詳細</th>
+      	<td class="text-left">
+      	  <%= link_to order_path(order.id) do %>
+            <span class="btn btn-sm btn-primary">表示する</span>
+          <% end %>
+      	</td>
+      </tr>
+    <% end %>
+  </table>
+
   <%= paginate orders %>
-  

@@ -16,4 +16,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_tree
+
+/*global $*/
+$(function(){
+  $('.owl-carousel').owlCarousel({
+    items: 4,
+    margin: 10,
+    loop: false,
+  });
+});

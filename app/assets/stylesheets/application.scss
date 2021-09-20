@@ -79,11 +79,16 @@ header {
   min-width: 168px;
 }
 
-@media screen and (max-width: 992px) {
-  .top-cards {
-    width: 400px;
-    margin: 0 auto;
-  }
+
+@media screen and (max-width: 992px){
+ .top-cards {
+   width: px;
+   margin: 0 auto;
+ }
+}
+
+.item {
+
 }
 
 #about {

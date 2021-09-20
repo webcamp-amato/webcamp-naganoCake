@@ -5,7 +5,7 @@
 DMM WEBCAMPのチーム開発課題です。
 架空の洋菓子店、「ながのCAKE」の商品を通販するためのECサイトを作成。
 
-##言語とフレームワーク
+## 言語とフレームワーク
 
 ・Ruby2.6.3
 
@@ -17,7 +17,7 @@ DMM WEBCAMPのチーム開発課題です。
 
 ・JQuery
 
-* Ruby version
+
 
 * System dependencies
 

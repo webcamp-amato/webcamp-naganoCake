@@ -21,21 +21,25 @@
         <%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "20%"%>
         <%= cart.item.name %>
       </td>
-      <td><%= (cart.item.price*1.1).round %></td>
+      <td><%= ((cart.item.price*1.1).round).to_s(:delimited) %></td>
       <td>
         <%= form_with model: cart, local: true do |f| %>
-          <div class="form-group row">
-            <% number = (1..100).to_a %>
+          <div class="form-group row mx-auto">
+            <% number = (1..99).to_a %>
             <%= f.select :count, number %>
-            <%= f.submit "変更", class:"btn btn-success d-inline^block" %>
+            <%= f.submit "変更", class:"btn btn-success btn-sm d-inline^block" %>
           </div>
         <% end %>
       </td>
       <td>
         <% price = (cart.item.price*1.1).round * cart.count %>
-        <%= price %>
+        <%= price.to_s(:delimited) %>
       </td>
-      <td><%= link_to "削除する", cart_item_path(cart.id, cart.item_id), method: :delete, class: "btn btn-danger" %></td>
+      <td>
+        <div class="trash">
+          <%= link_to "", cart_item_path(cart.id, cart.item_id), method: :delete, class: "btn btn-danger far fa-trash-alt" %>
+        </div>
+      </td>
     </tbody>
     <% @sum += price %>
   <% end %>
@@ -48,7 +52,7 @@
     <table class="table table-bordered">
       <tr>
         <th>合計金額</th>
-        <th><%= @sum %><span class="yen">円</span></th>
+        <th><%= @sum.to_s(:delimited) %><span class="yen">円</span></th>
       </tr>
     </table>
   </div>

@@ -2,45 +2,47 @@
   <h4>ショッピングカート</h4>
   <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
 </div>
-<table class="table table-bordered">
-  <thead>
-    <tr class="cart-thead">
-      <th class="cart-name">商品名</th>
-      <th class="cart-price">単価(税込)</th>
-      <th class="cart-count">数量</th>
-      <th class="cart-total">小計</th>
-      <th class="cart-destroy"></th>
-    </tr>
-  </thead>
-  <% cart_items.each do |cart| %>
-    <tbody>
-      <td>
-        <%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "20%"%>
-        <%= cart.item.name %>
-      </td>
-      <td><%= ((cart.item.price*1.1).round).to_s(:delimited) %></td>
-      <td>
-        <%= form_with model: cart, local: true do |f| %>
-          <div class="form-group row mx-auto">
-            <% number = (1..99).to_a %>
-            <%= f.select :count, number %>
-            <%= f.submit "変更", class:"btn btn-success btn-sm d-inline^block" %>
+<div class="table-responsive">
+  <table class="table table-bordered text-nowrap">
+    <thead>
+      <tr class="cart-thead">
+        <th class="cart-name">商品名</th>
+        <th class="cart-price">単価(税込)</th>
+        <th class="cart-count">数量</th>
+        <th class="cart-total">小計</th>
+        <th class="cart-destroy"></th>
+      </tr>
+    </thead>
+    <% cart_items.each do |cart| %>
+      <tbody>
+        <td class="align-middle">
+          <%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "20%", class: "d-none d-md-inline d-lg-inline d-xl-inline" %>
+          <%= cart.item.name %>
+        </td>
+        <td class="align-middle"><%= ((cart.item.price*1.1).round).to_s(:delimited) %></td>
+        <td class="align-middle">
+          <%= form_with model: cart, local: true do |f| %>
+            <div class="form-group row mx-auto">
+              <% number = (1..99).to_a %>
+              <%= f.select :count, number, class: "d-inline-block" %>
+              <%= f.submit "変更", class:"btn btn-success btn-sm d-inline-block" %>
+            </div>
+          <% end %>
+        </td>
+        <td class="align-middle">
+          <% price = (cart.item.price*1.1).round * cart.count %>
+          <%= price.to_s(:delimited) %>
+        </td>
+        <td class="align-middle">
+          <div class="trash">
+            <%= link_to "", cart_item_path(cart.id, cart.item_id), method: :delete, class: "btn btn-danger far fa-trash-alt" %>
           </div>
-        <% end %>
-      </td>
-      <td>
-        <% price = (cart.item.price*1.1).round * cart.count %>
-        <%= price.to_s(:delimited) %>
-      </td>
-      <td>
-        <div class="trash">
-          <%= link_to "", cart_item_path(cart.id, cart.item_id), method: :delete, class: "btn btn-danger far fa-trash-alt" %>
-        </div>
-      </td>
-    </tbody>
-    <% @sum += price %>
-  <% end %>
-</table>
+        </td>
+      </tbody>
+      <% @sum += price %>
+    <% end %>
+  </table>
+</div>
 <div class="row mx-auto">
   <div class="">
     <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>

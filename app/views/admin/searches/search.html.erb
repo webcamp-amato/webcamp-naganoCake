@@ -1,0 +1,12 @@
+<div class="header">
+    <%= render "layouts/header" %>
+</div>
+<div class="container">
+  <% if @category == 'Customer' %>
+    <%= render 'customer', customers: @customers %>
+    
+  <% else %>
+    <%= render 'item', items: @items %>
+  <% end %>
+</div>
+

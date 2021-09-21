@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :orders, only: [:show, :index, :update]
     resources :order_items, only: [:update]
+    get '/search' => "searches#search", as: "search" 
     root to: 'homes#top'
   end
 

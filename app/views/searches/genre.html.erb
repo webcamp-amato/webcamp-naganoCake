@@ -1,0 +1,13 @@
+<div class="header">
+  <%= render "layouts/header" %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'genres/index', genres: @genres %>
+    </div>
+    <div class="col-md-9 offset-md-1">
+      <%= render 'items/index', items: @items %>
+    </div>
+  </div>
+</div>

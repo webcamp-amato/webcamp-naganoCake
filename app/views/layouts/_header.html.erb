@@ -9,6 +9,13 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="nav navbar navbar-expand-lg navbar-light text-light navbar-nav ml-auto">
           <!--顧客ログイン時 -->
+          <li>
+            <%= form_with url: word_search_path, method: :get, local: true do |f| %>
+              <i class="fas fa-search text-dark"></i>
+              <%= f.text_field "search[value]", placeholder: "検索", class: "s" %>
+              <%= f.submit "", class: "searchsubmit" %>
+            <% end %>
+          </li>
           <% if customer_signed_in? %>
             <li class="header-name nav-link text-dark">
               ようこそ、<%= full_name(current_customer) %>さん！

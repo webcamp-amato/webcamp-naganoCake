@@ -2,7 +2,6 @@
   <div class="container-fluid pb-3">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <%=  %>
         <%= image_tag "logo.png", alt:"ロゴ", width: '100%', height: '100%', class:"col-2" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -10,6 +9,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="nav navbar navbar-expand-lg navbar-light text-light navbar-nav ml-auto">
             <!--顧客ログイン時 -->
+            <li>
+              <%= form_with url: word_search_path, method: :get, local: true do |f| %>
+                <i class="fas fa-search"></i>
+                <%= f.text_field "search[value]", placeholder: "検索", class: "s" %>
+                <%= f.submit "", class: "searchsubmit" %>
+              <% end %>
+            </li>
             <% if customer_signed_in? %>
               <li class="header-name nav-link text-light">
                 ようこそ、<%= full_name(current_customer) %>さん！

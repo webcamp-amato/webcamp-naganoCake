@@ -1,3 +1,6 @@
+<div class="header">
+  <%= render "layouts/header" %>
+</div>
 <div class="container my-5">
   <div class="row">
     <div class="col-md-2">
@@ -6,15 +9,18 @@
     <div class="col-md-9 offset-md-1">
       <div class="card">
         <div class="row no-gutters">
-          <div class="col-md-8 h-100">
-            <%= attachment_image_tag @item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", class: "card-img", alt: "商品イメージ" %>
+<<<<<<< HEAD
+=======
+          <div class="col-md-8">
+            <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "mizuho4141396IMG_7893_TP_V.jpg", class: "card-img show-card", alt: "商品イメージ" %>
+>>>>>>> origin/develop
           </div>
           <div class="col-md-4">
             <div class="card-body">
-              <h4 class="card-title"><%= @item.name %></h4>
+              <h5 class="card-title"><%= @item.name %></h5>
               <p class="card-text"><%= @item.description %></p>
               <div class="row">
-                <h3 class="mr-1">￥<%= @item.price.to_s(:delimited) %></h3><p>(税込)</p>
+                <p class="ml-3"><%= ((@item.price * 1.1).round).to_s(:delimited) %> 円</p><p>(税込)</p>
               </div>
 
               <% if customer_signed_in? %>
@@ -25,7 +31,7 @@
                   <%= f.hidden_field :item_id, :value => @item.id %>
                   <% number = (1..99).to_a %>
                   <%= f.select :count, number, class: "item-count" %>
-                  <%= f.submit "カートに追加する", class: "btn btn-success" %>
+                  <%= f.submit "カートに追加する", class: "btn btn-success btn-sm" %>
                 <% end %>
               <% end %>
 

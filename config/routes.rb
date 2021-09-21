@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
   resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
   resources :items, only: [:index, :show]
-  get '/search' => "searches#search", as: "search"
+  get '/search/genres/:id' => "searches#genre", as: "genre_search"
+  get '/search' => "searches#word", as: "word_search"
 
   root to: 'homes#top'
   get 'homes/about'

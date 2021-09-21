@@ -1,4 +1,5 @@
-<table border="1">
+<div class="table-responsive">
+  <table class="table table-hover text-nowrap">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -19,6 +20,7 @@
       <td><%= order.status_str %></td>
     </tr>
     <% end %>
-</table>
+  </table>
+</div>
 
 <%= paginate orders %>

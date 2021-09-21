@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @items = Item.all.page(params[:page]).reverse_order.per(4)
+    @items = Item.all.page(params[:page]).reverse_order.per(6)
     @genres = Genre.all
   end
 

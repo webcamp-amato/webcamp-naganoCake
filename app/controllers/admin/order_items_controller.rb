@@ -8,11 +8,11 @@ class Admin::OrderItemsController < ApplicationController
     if @order.order_items.where(status: "製作中").any?
       @order.status = "製作中"
       @order.save
-
-    elsif @order.order_items.where(status: "製作完了").all?
+    elsif @order.order_items.count == @order.order_items.where(status: "製作完了").count
       @order.status = "発送準備中"
       @order.save
     end
+    
     redirect_to request.referer
 
   end

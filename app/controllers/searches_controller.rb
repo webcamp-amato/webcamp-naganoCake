@@ -1,5 +1,8 @@
 class SearchesController < ApplicationController
   def word
+    @value = params["search"]["value"]
+    @items = Item.search_for(@value).page(params[:id]).per(8)
+    @genres = Genre.all
   end
 
   def genre

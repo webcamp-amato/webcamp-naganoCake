@@ -7,4 +7,8 @@ class Item < ApplicationRecord
   validates :description, length: {minimum: 1, maximum: 255}
   validates :price, presence: true
   validates :genre_id, presence: true
+
+  def self.search_for(value)
+    Item.where('name LIKE ?', '%' + value + '%')
+  end
 end

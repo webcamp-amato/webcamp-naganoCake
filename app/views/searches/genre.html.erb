@@ -4,10 +4,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <%= render 'genres/index', genres: @genres %>
+      <div class="row">
+        <%= render 'genres/index', genres: @genres %>
+      </div>
     </div>
     <div class="col-md-9 offset-md-1">
-      <%= render 'items/index', items: @items %>
+      <div class="row">
+        <h2 class="mr-2">"<%= @genre.name %>" 一覧 <small class="text-muted">(全<%= @items.count %>件)</small></h2>
+        <%= render 'search', items: @items %>
+      </div>
     </div>
   </div>
 </div>

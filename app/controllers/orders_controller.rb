@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+
     @order = Order.new
     @customer = current_customer
     @order.customer_id = @customer.id
@@ -36,37 +37,41 @@ class OrdersController < ApplicationController
 
     elsif params[:place_option] == "1"
       @sta = params[:order_place]
-      @order_place = DeliveryPlace.find(@sta)
-      @order.postcode = @order_place.postcode
-      @order.address = @order_place.address
-      @order.addressee = @order_place.addressee
+      if @sta.present?
+        @order_place = DeliveryPlace.find(@sta)
+        @order.postcode = @order_place.postcode
+        @order.address = @order_place.address
+        @order.addressee = @order_place.addressee
+      else
+        flash[:notice] = "お届け先を選択してください。"
+        redirect_to new_order_path
+        return
+      end
 
     elsif params[:place_option] == "2"
       @order.postcode = params[:postcode]
       @order.address = params[:address]
       @order.addressee = params[:addressee]
     end
-    # binding.pry
 
-     # if request.path_info != session[:ref]
-    #   session[:ref] = request.path_info
-  # 通常時の処理
-    # else
-  # reload時の処理
-    #   render 'new'
-    # end
+    if @order.postcode.blank? || @order.address.blank? || @order.addressee.blank?
+      flash[:notice] = "お届け先を入力してください。"
+      redirect_to new_order_path
+    end
 
   end
 
   def create
     # 注文の保存
+    @cart_items = current_customer.cart_items.all
+    if @cart_items.exists?
       @order = Order.new(order_params)
       @order.save
+
       if @order.invalid?
         render :new
       end
     # 注文商品の保存
-      @cart_items = current_customer.cart_items.all
       @cart_items.each do |cart_item|
         @order_items = @order.order_items.new
         @order_items.order_id = @order.id
@@ -75,12 +80,17 @@ class OrdersController < ApplicationController
         @order_items.price = cart_item.item.price
         @order_items.save
       end
-
       # カートアイテムの削除
       @cart_items.destroy_all
 
       redirect_to orders_complete_path
+
+    else
+      flash[:notice] = "再度商品をお選びください。"
+      redirect_to root_path
+    end
   end
+
 
   def complete
   end

@@ -8,7 +8,6 @@ class Admin::SearchesController < ApplicationController
         @items = Item.search_for(@value).page(params[:id]).per(10)
       end
     end
-
     
     
 end

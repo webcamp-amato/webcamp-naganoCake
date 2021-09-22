@@ -37,9 +37,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    resources :orders, only: [:show, :index, :update]
+    resources :orders, only: [:show, :update]
     resources :order_items, only: [:update]
-    get '/search' => "searches#search", as: "search" 
+    get '/search' => "searches#search", as: "search"
+    get '/orders/:id/index' => "orders#index", as: "order_index"
     root to: 'homes#top'
   end
 

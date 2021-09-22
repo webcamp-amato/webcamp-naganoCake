@@ -1,9 +1,11 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .field_with_errors {
-  width: 100%;
+  display: contents;
 }
+
 .new-item {
   position: relative;
   top: 10px;
@@ -13,3 +15,4 @@
     text-decoration: none;
   }
 }
+

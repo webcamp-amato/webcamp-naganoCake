@@ -1,72 +1,20 @@
 <div class="header">
   <%= render "layouts/header" %>
 </div>
-<div class="container">
-
-  <h2>注文情報確認</h2>
-
-<div class="table-responsive">
-
-  <table class="table table-bordered text-nowrap">
-      <tr class="table-secondary">
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-      </tr>
-
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-          <td>
-            <%= attachment_image_tag cart_item.item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "15%"%>
-
-            <%= cart_item.item.name %>
-          </td>
-          <td class="align-middle"><%= ((cart_item.item.price * 1.1).round).to_s(:delimited) %></td>
-          <td class="align-middle"><%= cart_item.count %></td>
-          <!--小計の計算-->
-          <% subtotal = (cart_item.item.price * 1.1).round * cart_item.count %>
-          <td class="align-middle"><%= subtotal.to_s(:delimited) %></td>
-      </tr>
-      <% @sum += subtotal %>
-    <% end %>
-  </table>
-</div>
-
-<div class="table-responsive">
-  <table class="table table-bordered text-nowrap">
-    <tr>
-      <th class="table-secondary">送料</th>
-      <td><%= @order.postage.to_s(:delimited) %> 円</td>
-    </tr>
-    <tr>
-      <th class="table-secondary">商品合計</th>
-      <td><%= @sum.to_s(:delimited) %> 円</td>
-    </tr>
-    <tr>
-      <th class="table-secondary">請求金額</th>
-      <% @order.total_price = @order.postage + @sum %>
-      <td><span class="font-weight-bold"><%= @order.total_price.to_s(:delimited) %></span> 円</td>
-    </tr>
-  </table>
-</div>
-
-  <span class="font-weight-bold">支払方法　</span><%= @order.payment_method %>
-
-  <br>
-  <span class="font-weight-bold">お届け先　</span>〒<%= @order.postcode %><%= @order.address %><%= @order.addressee %>
-</div>
-
-
-<%= form_for @order, method: :post, url: orders_path do |form| %>
-  <%= form.hidden_field :customer_id %>
-  <%= form.hidden_field :total_price %>
-  <%= form.hidden_field :payment_method %>
-  <%= form.hidden_field :postage %>
-  <%= form.hidden_field :addressee %>
-  <%= form.hidden_field :postcode %>
-  <%= form.hidden_field :address %>
-  <div class="text-center my-3">
-    <%= form.submit '注文を確定する', class: 'btn btn-success' %>
+<% if @cart_items.exists? %>
+  <%= render "confirm", cart_items: @cart_items, order: @order, sum: @sum %>
+<% else %>
+  <div class="box">
+    <div class="container">
+      <div>
+        <h2 class="text-center mt-4">
+          読み込み直しましたので、<br/>
+          再度入力画面からお願いします。
+        </h2>
+      </div>
+      <div class="text-center my-4">
+        <%= link_to "情報入力へ戻る", new_order_path, class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>

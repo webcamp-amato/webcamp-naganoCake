@@ -22,9 +22,8 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   def self.search_for(value)
-    Customer.where('last_name LIKE?', '%' + value + '%')
+    Customer.where(['last_name || first_name LIKE?', '%' + value + '%'])
   end
-  
 end

@@ -24,7 +24,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(customer_id: params[:id]).page(params[:page]).per(8)
+    @orders = Order.where(customer_id: params[:id]).order(created_at: "DESC").page(params[:page]).per(8)
+    @customer = Customer.find(params[:id])
   end
 
   private

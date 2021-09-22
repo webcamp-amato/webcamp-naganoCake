@@ -57,18 +57,22 @@ DMM WEBCAMPのチーム開発課題です。
 
 ・検索機能(商品名、会員名)
 
-* System dependencies
+## 設計書
 
-* Configuration
+・[ER図](https://drive.google.com/file/d/1IbyPGCk2siHkmQt4jBJP5Kuc8kXtVXTE/view?usp=sharing)
 
-* Database creation
+・[テーブル定義書](https://docs.google.com/spreadsheets/d/1iNoNXIcsJTD_kl_qf5sezRr--MVeVWH6-S-16xKXfM4/edit?usp=sharing)
 
-* Database initialization
+・[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1r-I4kXwQeD4dzZJxoERVGLu1N-LLFZo7-P0Km8EUfzI/edit?usp=sharing)
 
-* How to run the test suite
+## 使用したＧＥＭ
 
-* Services (job queues, cache servers, search engines, etc.)
+アプリケーション詳細設計書に記載されています。そちらをご覧下さい。
 
-* Deployment instructions
+## 開発メンバー
 
-* ...
+・コタロー
+
+・さきちゃん
+
+・こらった

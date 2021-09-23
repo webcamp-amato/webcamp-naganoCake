@@ -17,12 +17,7 @@
   </head>
 
   <body>
-    <%#フラッシュメッセージ%>
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <%= render 'layouts/flash' %>
     <%= yield %>
     <div class="footer">
       <%= render "layouts/footer" %>

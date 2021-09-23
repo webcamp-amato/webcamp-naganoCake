@@ -80,12 +80,10 @@ header {
   min-width: 168px;
 }
 
-#top-about {
-    width: 90%;
-    height: 400px;
-    padding-top: 190px;
+#top-about1 {
+    width: 80%;
+    height: 700px;
     margin-top: 50px;
-    text-align: center;
     color: #f7f7f7;
     background-image: url(image1.jpeg);
     background-size: cover;
@@ -93,6 +91,39 @@ header {
     background-color: rgba(0,0,0,0.2);
     background-blend-mode: overlay;
     border-radius: 0 40px 40px 0;
+}
+
+#top-about2 {
+    width: 80%;
+    height: 700px;
+    margin-top: 200px;
+    margin-left: auto;
+    color: #f7f7f7;
+    background-image: url(image5.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0,0,0,0.2);
+    background-blend-mode: overlay;
+    border-radius: 40px 0 0 40px;
+}
+
+#top-about3 {
+    width: 80%;
+    height: 700px;
+    margin-top: 200px;
+    color: #f7f7f7;
+    background-image: url(image4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0,0,0,0.2);
+    background-blend-mode: overlay;
+    border-radius: 0 40px 40px 0;
+}
+
+.top-cap {
+  text-align: center;
+  padding-top: 290px;
+  opacity: 0.9;
 }
 
 

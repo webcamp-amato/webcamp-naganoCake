@@ -19,8 +19,11 @@ class DeliveryPlacesController < ApplicationController
 
   def update
     @delivery_place = DeliveryPlace.find(params[:id])
-    @delivery_place.update(delivery_params)
-    redirect_to delivery_places_path
+    if @delivery_place.update(delivery_params)
+      redirect_to delivery_places_path
+    else
+      render :edit
+    end
   end
 
   def destroy

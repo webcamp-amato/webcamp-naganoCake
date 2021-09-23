@@ -1,0 +1,27 @@
+<div class="container mt-3 mb-0 bg">
+  <div>
+    <div class="col-12">
+      <h3 class="ml-4 text-left"><i class="fas fa-arrow-circle-up"></i>新着商品</h3>
+      <div class="slider-card">
+        <!--<div class="card-deck top-cards">-->
+          <% @items.each do |item| %>
+            <div class="nest-slider-card">
+              <div class="card m-3 bg-light item">
+                <%= link_to item_path(item) do %>
+                  <%= attachment_image_tag item, :image, format: 'jpeg', fallback: "mizuho4141396IMG_7893_TP_V.jpg", class: "card-img-top show-card", alt: "商品イメージ", size: "200x160"%>
+                <% end %>
+                <div class="card-body">
+                  <p class="card-title item-name top-char"><%= link_to item.name, item_path(item) %></p>
+                  <p class="card-text text-dark">￥<%= item.price %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="col-12 text-right">
+      <h5><%= link_to "すべての商品を見る >", items_path, class:"font-weight-bold" %></h5>
+    </div>
+  </div>
+</div>

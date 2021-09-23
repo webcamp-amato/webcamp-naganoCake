@@ -4,6 +4,13 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
+    if params[:is_deleted_value]
+      @customers = Customer.where(is_deleted: "false")
+    # elsif params[:sort_value]
+    #   @custoemrs = Customer.value
+    else
+      @customers = Customer.all
+    end
   end
 
   def show

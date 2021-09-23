@@ -23,6 +23,11 @@ class Admin::OrdersController < ApplicationController
     redirect_to request.referer
   end
 
+  def index
+    @orders = Order.where(customer_id: params[:id]).order(created_at: "DESC").page(params[:page]).per(8)
+    @customer = Customer.find(params[:id])
+  end
+
   private
     def order_status_params
       params.require(:order).permit(:status)

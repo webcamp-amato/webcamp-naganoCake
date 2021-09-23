@@ -10,9 +10,10 @@
     </div>
     <div class="col-md-9 offset-md-1">
       <div class="row">
-        <h2 class="mr-2">"<%= @genre.name %>" 一覧 <small class="text-muted">(全<%= @items.count %>件)</small></h2>
+        <h2 class="mr-2">"<%= @genre.name %>" 一覧 <small class="text-muted">(全<%= @search_items.count %>件)</small></h2>
         <%= render 'search', items: @items %>
       </div>
     </div>
   </div>
 </div>
+<%= paginate @items %>

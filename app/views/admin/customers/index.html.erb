@@ -2,7 +2,13 @@
   <%= render "layouts/header" %>
 </div>
 <div class="container">
-  <h2 class="head-line title_h2">会員一覧 <small class=“text-muted”><%= link_to "|有効会員のみ表示|", admin_customers_path(is_deleted_value: "true") %></small></h2>
+  <h2 class="head-line title_h2">
+    会員一覧
+    <small class=“text-muted”>
+      <%= link_to "|有効会員のみ表示|", admin_customers_path(is_deleted_value: "true") %>
+      <%= link_to "全会員を表示|", admin_customers_path %>
+    </small>
+  </h2>
   <div class="row">
     <div class="col-12">
       <table class="table table-hover table-condensed">

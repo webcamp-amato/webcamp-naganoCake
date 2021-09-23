@@ -2,6 +2,41 @@
   <%= render "layouts/header" %>
 </div>
 <div class="container my-4">
-  <h2>注文履歴一覧</h2>
-  <%= render 'top', orders: @orders %>
+  <h2 class="d-inline-block">
+    注文履歴一覧
+  </h2>
+
+  <!-- ハンバーガーメニュー -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- ナビゲーションメニュー -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link d-inline-block">
+            注文ステータス：
+            <%= link_to "入金待ち", admin_root_path(order_waiting_value: "true") %>
+            <%= link_to "入金確認", admin_root_path(order_preparing_value: "true") %>
+            <%= link_to "制作中", admin_root_path(order_making_value: "true") %>
+            <%= link_to "発送準備中", admin_root_path(order_sending_value: "true") %>
+            <%= link_to "発送済み", admin_root_path(order_complete_value: "true") %>
+            <%= link_to "絞り込み解除", admin_root_path %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-inline-block">
+            製品ステータス：
+            <%= link_to "着手不可", admin_root_path(order_items_stopping_value: "true") %>
+            <%= link_to "製作待ち", admin_root_path(order_items_preparing_value: "true") %>
+            <%= link_to "制作中", admin_root_path(order_items_making_value: "true") %>
+            <%= link_to "製作完了", admin_root_path(order_items_complete_value: "true") %>
+            <%= link_to "絞り込み解除", admin_root_path %>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <%= render 'top', orders: @orders %>
+    </div>
 </div>

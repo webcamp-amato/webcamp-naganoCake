@@ -18,6 +18,7 @@ class Admin::HomesController < ApplicationController
         @orders.push(item.order)
       end
       @orders = @orders.uniq
+      @orders = @orders.sort.reverse
       @orders = Kaminari.paginate_array(@orders).page(params[:page]).per(10)
     elsif params[:order_items_preparing_value]
       @items = OrderItem.where(status: "制作待ち")
@@ -25,6 +26,8 @@ class Admin::HomesController < ApplicationController
       @items.each do |item|
         @orders.push(item.order)
       end
+      @orders = @orders.uniq
+      @orders = @orders.sort.reverse
       @orders = Kaminari.paginate_array(@orders).page(params[:page]).per(10)
     elsif params[:order_items_making_value]
       @items = OrderItem.where(status: "制作中")
@@ -32,6 +35,8 @@ class Admin::HomesController < ApplicationController
       @items.each do |item|
         @orders.push(item.order)
       end
+      @orders = @orders.uniq
+      @orders = @orders.sort.reverse
       @orders = Kaminari.paginate_array(@orders).page(params[:page]).per(10)
     elsif params[:order_items_complete_value]
       @items = OrderItem.where(status: "製作完了")
@@ -39,6 +44,8 @@ class Admin::HomesController < ApplicationController
       @items.each do |item|
         @orders.push(item.order)
       end
+      @orders = @orders.uniq
+      @orders = @orders.sort.reverse
       @orders = Kaminari.paginate_array(@orders).page(params[:page]).per(10)
     else
       @orders = Order.all.order(created_at: "DESC").page(params[:page]).per(8)

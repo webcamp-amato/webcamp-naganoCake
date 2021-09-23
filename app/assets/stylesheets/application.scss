@@ -168,24 +168,17 @@ header {
   height: 400px;
 }
 
-.item-index {
-  // position: relative;
-  width: 100%;
-  // &:before {
-  //   content: "";
-  //   display: block;
-  //   padding-top: 75%;
-  // }
+.show-card {
+  object-fit: cover;
+
 }
 
-.show-card {
-  width: 100%;
-  object-fit: cover;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // bottom: 0;
-  // right: 0;
+.show-body {
+  display: flex;
+}
+
+.cart-btn {
+  align-items: flex-end;
 }
 
 .nest-slider-card {

@@ -47,8 +47,9 @@
 
         <div class="form-inline form-group col-12">
           <%= f.label :"パスワード", class: "col-2 control-label" %>
+          
           <% if @minimum_password_length %>
-          <span>(<%= @minimum_password_length %> 文字以上 )</span>
+          <span>(<%= @minimum_password_length %> 文字以上) </span>
           <% end %>
           <%= f.password_field :password, autocomplete: "new-password", class: "col-3 form-control" %>
         </div>

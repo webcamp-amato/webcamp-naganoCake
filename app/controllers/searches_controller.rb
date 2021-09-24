@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class SearchesController < ApplicationController
   def word
-    @value = params["search"]["value"]
+    @value = params['search']['value']
     @items = Item.search_for(@value).page(params[:page]).per(8)
     @genres = Genre.all
   end

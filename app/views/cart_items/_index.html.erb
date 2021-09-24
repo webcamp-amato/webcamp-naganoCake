@@ -16,7 +16,7 @@
     <% cart_items.each do |cart| %>
       <tbody>
         <td class="align-middle">
-          <%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "20%", class: "d-none d-md-inline d-lg-inline d-xl-inline" %>
+          <%= attachment_image_tag cart.item, :image, format: 'jpeg', fallback: "mizuho4141396IMG_7893_TP_V.jpg", alt: "商品イメージ", width: "20%", class: "d-none d-md-inline d-lg-inline d-xl-inline" %>
           <%= cart.item.name %>
         </td>
         <td class="align-middle"><%= ((cart.item.price*1.1).round).to_s(:delimited) %></td>

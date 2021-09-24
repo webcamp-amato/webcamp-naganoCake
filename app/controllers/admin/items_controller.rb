@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
 
@@ -17,7 +19,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.price.to_i
     if @item.save
-      flash[:notice] = "商品を登録しました。"
+      flash[:notice] = '商品を登録しました。'
       redirect_to admin_item_url(@item)
     else
       render :new
@@ -31,7 +33,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "商品情報を更新しました。"
+      flash[:notice] = '商品情報を更新しました。'
       redirect_to admin_item_url(@item)
     else
       render :edit
@@ -39,7 +41,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   private
-    def item_params
-      params.require(:item).permit(:genre_id, :name, :description, :price, :is_active, :image)
-    end
+
+  def item_params
+    params.require(:item).permit(:genre_id, :name, :description, :price, :is_active, :image)
+  end
 end

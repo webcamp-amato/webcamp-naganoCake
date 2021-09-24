@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
 
@@ -10,7 +12,7 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.all.page(params[:page]).per(10)
     @genre = Genre.new(genre_params)
     if @genre.save
-      flash[:notice] = "ジャンルを登録しました。"
+      flash[:notice] = 'ジャンルを登録しました。'
       redirect_to admin_genres_path
     else
       render :index
@@ -24,17 +26,16 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      flash[:notice] = "ジャンル名を変更しました。"
+      flash[:notice] = 'ジャンル名を変更しました。'
       redirect_to admin_genres_path
     else
       render :edit
     end
   end
 
-
   private
 
-    def genre_params
-      params.require(:genre).permit(:name)
-    end
+  def genre_params
+    params.require(:genre).permit(:name)
+  end
 end

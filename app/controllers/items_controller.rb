@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
   def index
     @items = Item.all.page(params[:page]).per(8)
@@ -7,9 +9,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
-    
-    if customer_signed_in?
-      @cart_item = current_customer.cart_items.new
-    end
+
+    @cart_item = current_customer.cart_items.new if customer_signed_in?
   end
 end

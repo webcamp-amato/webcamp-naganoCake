@@ -134,66 +134,6 @@ header {
   opacity: 0.9;
 }
 
-.top-btn {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 50px;
-}
-
-.top-link:hover {
-  text-decoration: none;
-}
-
-.about-btn {
-  margin-right: 30px;
-  border-radius: 25px;
-  &:hover .person-img {
-    opacity: 0.7;
-  }
-}
-
-.index-btn {
-  border-radius: 25px;
-  &:hover .items-img{
-    opacity: 0.7;
-  }
-}
-
-.person-img {
-  width: 270px;
-  height: 200px;
-  border-radius: 25px 25px 0 0;
-}
-
-.items-img {
-  width: 270px;
-  height: 200px;
-  border-radius: 25px 25px 0 0;
-}
-
-.btn-body {
-  height: 100px;
-  background-color: #24395b;
-  border-radius: 0 0 25px 25px;
-}
-
-.btn-text {
-  text-align: center;
-  color: #f7f7f7;
-}
-
-
-// @media screen and (max-width: 992px){
-// .top-cards {
-//   width: px;
-//   margin: 0 auto;
-// }
-// }
-
-.item {
-
-}
 
 #about {
     width: 100%;
@@ -254,11 +194,6 @@ header {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='1' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-// {
-//   display: flex;
-//   align-items: center;
-// }
-
 .box {
   display: flex;
   justify-content: center;
@@ -314,13 +249,55 @@ background: transparent;
 cursor: pointer;
 }
 
-.contact {
-  margin-left: auto;
+.top-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
-.icon {
-  margin: 0 3px;
-  font-size: 20px;
-  color: #24395b;
-  text-decoration-color: #24395b;
+.top-link:hover {
+  text-decoration: none;
+}
+
+.about-btn {
+  margin-right: 30px;
+  border-radius: 25px;
+  &:hover .person-img {
+    opacity: 0.7;
+  }
+}
+
+.index-btn {
+  border-radius: 25px;
+  &:hover .items-img{
+    opacity: 0.7;
+  }
+}
+
+.person-img {
+  width: 270px;
+  height: 200px;
+  border-radius: 25px 25px 0 0;
+}
+
+.items-img {
+  width: 270px;
+  height: 200px;
+  border-radius: 25px 25px 0 0;
+}
+
+.btn-body {
+  height: 100px;
+  background-color: #24395b;
+  border-radius: 0 0 25px 25px;
+}
+
+.btn-text {
+  text-align: center;
+  color: #f7f7f7;
+}
+
+.contact {
+  margin-left: auto;
 }

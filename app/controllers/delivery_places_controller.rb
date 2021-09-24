@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DeliveryPlacesController < ApplicationController
-   before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def index
     @delivery_places = current_customer.delivery_places
@@ -14,7 +16,7 @@ class DeliveryPlacesController < ApplicationController
     @delively_place = DeliveryPlace.new(delivery_params)
     @delively_place.customer_id = current_customer.id
     @delively_place.save
-    @delivery_places = current_customer.delivery_places #index遷移用
+    @delivery_places = current_customer.delivery_places # index遷移用
   end
 
   def update
@@ -29,7 +31,7 @@ class DeliveryPlacesController < ApplicationController
   def destroy
     @delivery_place = DeliveryPlace.find(params[:id])
     @delivery_place.destroy
-    @delivery_places = current_customer.delivery_places #index遷移用
+    @delivery_places = current_customer.delivery_places # index遷移用
   end
 
   private
@@ -37,5 +39,4 @@ class DeliveryPlacesController < ApplicationController
   def delivery_params
     params.require(:delivery_place).permit(:postcode, :address, :addressee)
   end
-
 end

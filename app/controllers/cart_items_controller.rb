@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
@@ -40,10 +42,9 @@ class CartItemsController < ApplicationController
     redirect_to cart_items_url
   end
 
-
   private
 
-    def cart_item_params
-      params.require(:cart_item).permit(:customer_id, :item_id, :count)
-    end
+  def cart_item_params
+    params.require(:cart_item).permit(:customer_id, :item_id, :count)
+  end
 end

@@ -19,6 +19,13 @@
 @import "slick-theme";
 @import "slick";
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 body {
   font-family: 'Kiwi Maru', serif;
   background-color: #f7f7f7;
@@ -111,7 +118,7 @@ header {
     width: 80%;
     height: 700px;
     margin-top: 200px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     color: #f7f7f7;
     background-image: url(image4.jpg);
     background-size: cover;
@@ -126,6 +133,7 @@ header {
   padding-top: 290px;
   opacity: 0.9;
 }
+
 
 #about {
     width: 100%;

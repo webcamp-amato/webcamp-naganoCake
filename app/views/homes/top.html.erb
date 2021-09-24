@@ -29,9 +29,23 @@
     ぜひご注文下さい。
     </h2>
 </section>
-<section class="container top-btn">
-  <%= link_to homes_about_path do %>
-  <% end %>
-  <%= link_to items_path do %>
-  <% end %>
+<section class="container">
+  <div class="row top-btn">
+    <%= link_to homes_about_path, class:"top-link" do %>
+      <div class="about-btn">
+        <%= image_tag "person1.jpg", alt:"person", class:"person-img" %>
+        <div class="btn-body">
+          <h3 class="btn-text text-center pt-4">About</h3>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to items_path, class:"top-link" do %>
+      <div class="index-btn">
+        <%= image_tag "cake-about2.jpg", alt:"cake", class:"items-img" %>
+        <div class="btn-body">
+          <h3 class="btn-text text-center pt-4">商品一覧</h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </section>

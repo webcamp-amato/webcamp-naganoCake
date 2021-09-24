@@ -19,6 +19,13 @@
 @import "slick-theme";
 @import "slick";
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 body {
   font-family: 'Kiwi Maru', serif;
   background-color: #f7f7f7;
@@ -111,7 +118,7 @@ header {
     width: 80%;
     height: 700px;
     margin-top: 200px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     color: #f7f7f7;
     background-image: url(image4.jpg);
     background-size: cover;
@@ -125,6 +132,55 @@ header {
   text-align: center;
   padding-top: 290px;
   opacity: 0.9;
+}
+
+.top-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.top-link:hover {
+  text-decoration: none;
+}
+
+.about-btn {
+  margin-right: 30px;
+  border-radius: 25px;
+  &:hover .person-img {
+    opacity: 0.7;
+  }
+}
+
+.index-btn {
+  border-radius: 25px;
+  &:hover .items-img{
+    opacity: 0.7;
+  }
+}
+
+.person-img {
+  width: 270px;
+  height: 200px;
+  border-radius: 25px 25px 0 0;
+}
+
+.items-img {
+  width: 270px;
+  height: 200px;
+  border-radius: 25px 25px 0 0;
+}
+
+.btn-body {
+  height: 100px;
+  background-color: #24395b;
+  border-radius: 0 0 25px 25px;
+}
+
+.btn-text {
+  text-align: center;
+  color: #f7f7f7;
 }
 
 
@@ -258,3 +314,13 @@ background: transparent;
 cursor: pointer;
 }
 
+.contact {
+  margin-left: auto;
+}
+
+.icon {
+  margin: 0 3px;
+  font-size: 20px;
+  color: #24395b;
+  text-decoration-color: #24395b;
+}

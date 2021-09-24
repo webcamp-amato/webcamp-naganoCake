@@ -1,10 +1,33 @@
-<footer class="text-center ">
+<footer class="mt-4">
   <div class='container'>
     <div class='row'>
-      <div class='mx-auto'>
-        <h3><i class="fab fa-instagram"></i> instagram</h3>
-        <p>copyright naganoCake 2001</p>
+      <div class="footer-text col-md-4">
+        <h4></h4>
+        <p>
+          〒380-0801<br/>
+          長野県長野市甘党の里3丁目176-9<br/>
+          080-3475-0001
+        </p>
+      </div>
+      <div class='contact'>
+        <%= link_to url:"#", class:"top-link" do %>
+          <i class="fab fa-instagram icon"></i>
+        <% end %>
+        <%= link_to url:"#", class:"top-link" do %>
+          <i class="fab fa-twitter icon"></i>
+        <% end %>
+        <%= link_to url:"#", class:"top-link" do %>
+          <i class="fab fa-facebook icon"></i>
+        <% end %>
+        <%= link_to url:"#", class:"top-link" do %>
+          <i class="fas fa-envelope icon"></i>
+        <% end %>
+        <br/>
+        <%= link_to "お問い合わせ", url:"#", class:"top-link icon" %>
+        <br/>
+        <%= link_to "ブログ", url:"#", class:"top-link icon" %>
       </div>
     </div>
+    <p class="text-center">copyright naganoCake 2001</p>
   </div>
 </footer>

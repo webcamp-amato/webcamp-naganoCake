@@ -19,13 +19,15 @@ Rails.application.routes.draw do
       delete '/destroy_all' => 'cart_items#destroy_all'
     end
   end
-  post '/orders/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
+  post '/orders/confirm' => 'orders#confirm'
+  get '/orders/confirm' => 'orders#error'
   resources :orders, only: [:create, :index, :show, :new]
 
   resources :delivery_places, only: [:index, :edit, :update, :destroy, :create]
   resources :items, only: [:index, :show]
-  get '/search' => "searches#search", as: "search"
+  get '/search/genres/:id' => "searches#genre", as: "genre_search"
+  get '/search' => "searches#word", as: "word_search"
 
   root to: 'homes#top'
   get 'homes/about'
@@ -35,8 +37,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    resources :orders, only: [:show, :index, :update]
+    resources :orders, only: [:show, :update]
     resources :order_items, only: [:update]
+    get '/search' => "searches#search", as: "search"
+    get '/orders/:id/index' => "orders#index", as: "order_index"
     root to: 'homes#top'
   end
 

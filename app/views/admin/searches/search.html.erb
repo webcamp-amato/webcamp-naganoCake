@@ -1,0 +1,17 @@
+<div class="header">
+    <%= render "layouts/header" %>
+</div>
+<div class="container">
+  <% unless @value == "" %>
+    <% if @category == 'Customer' %>
+      <%= render 'customer', customers: @customers %>
+    <% elsif @category == 'Item' %>
+      <%= render 'item', items: @items %>
+    <% end %>
+  <% else %>
+    <div class="text-center box">
+      <h2>検索ワードを入力してください。</h2>
+    </div>
+  <% end %>
+</div>
+

@@ -1,14 +1,36 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light container-fluid">
+    <div class="container-fluid">
       <%=  %>
-      <%= link_to image_tag("logo.png", alt:"ロゴ", width: '50%', height: '50%'), root_path, class:"col-2" %>
+      <%= link_to image_tag("logo.png", alt:"ロゴ", width: '100%', height: '100%'), root_path, class:"col-2" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="nav navbar navbar-expand-lg navbar-light navbar-nav ml-auto">
+        <ul class="nav navbar navbar-expand-lg navbar-light text-light navbar-nav ml-auto">
           <!--顧客ログイン時 -->
+
+          <% if admin_signed_in? %>
+            <li>
+               <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+                <i class="fas fa-search text-dark"></i>
+                <%= f.text_field :value, placeholder: "検索", class: "s" %>
+                <%= f.submit "", class: "searchsubmit" %>
+                <%= f.select :category, options_for_select({"会員" => "Customer", "商品" => "Item"}) %>
+              <% end %>
+
+            </li>
+          <% else %>
+            <li>
+              <%= form_with url: word_search_path, method: :get, local: true do |f| %>
+                <i class="fas fa-search text-dark"></i>
+                <%= f.text_field "search[value]", placeholder: "検索", class: "s" %>
+                <%= f.submit "", class: "searchsubmit" %>
+              <% end %>
+            </li>
+
+          <% end %>
+
           <% if customer_signed_in? %>
             <li class="header-name nav-link text-dark">
               ようこそ、<%= full_name(current_customer) %>さん！

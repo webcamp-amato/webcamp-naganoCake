@@ -4,6 +4,13 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
+    if params[:is_deleted_value]
+      @customers = Customer.where(is_deleted: "false")
+    # elsif params[:sort_value]
+    #   @custoemrs = Customer.value
+    else
+      @customers = Customer.all
+    end
   end
 
   def show
@@ -16,9 +23,12 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(admin_customer_params)
-    flash[:notice] = "会員情報を編集しました"
-    redirect_to admin_customer_path
+    if @customer.update(admin_customer_params)
+      flash[:notice] = "会員情報を編集しました"
+      redirect_to admin_customer_path
+    else
+      render :edit
+    end
   end
 
   private

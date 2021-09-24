@@ -1,62 +1,20 @@
-<div class="container">
-
-  <h2>注文情報確認</h2>
-
-  <table border="1">
-      <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-      </tr>
-
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-          <td>
-            <!--画像はまだ-->
-
-            <%= cart_item.item.name %>
-          </td>
-          <td><%= (cart_item.item.price * 1.1).round %></td>
-          <td><%= cart_item.count %></td>
-          <!--小計の計算-->
-          <% subtotal = (cart_item.item.price * 1.1).round * cart_item.count %>
-          <td><%= subtotal %></td>
-      </tr>
-      <% @sum += subtotal %>
-    <% end %>
-  </table>
-
-  <table border="1">
-    <tr>
-      <th>送料</th>
-      <td><%= @order.postage %></td>
-    </tr>
-    <tr>
-      <th>商品合計</th>
-      <td><%= @sum %></td>
-    </tr>
-    <tr>
-      <th>請求金額</th>
-      <% @order.total_price = @order.postage + @sum %>
-      <td><%= @order.total_price %></td>
-    </tr>
-  </table>
-
-  <span>支払方法　</span><%= @order.payment_method %>
-  <br>
-  <span>お届け先　</span>〒<%= @order.postcode %><%= @order.address %><%= @order.addressee %>
+<div class="header">
+  <%= render "layouts/header" %>
 </div>
-
-
-<!--ここで文字列-->
-<%= form_for @order, method: :post, url: orders_path do |form| %>
-  <%= form.hidden_field :customer_id %>
-  <%= form.hidden_field :total_price %>
-  <%= form.hidden_field :payment_method %>
-  <%= form.hidden_field :postage %>
-  <%= form.hidden_field :addressee %>
-  <%= form.hidden_field :postcode %>
-  <%= form.hidden_field :address %>
-  <%= form.submit '注文を確定する' %>
+<% if @cart_items.exists? %>
+  <%= render "confirm", cart_items: @cart_items, order: @order, sum: @sum %>
+<% else %>
+  <div class="box">
+    <div class="container">
+      <div>
+        <h2 class="text-center mt-4">
+          読み込み直しましたので、<br/>
+          再度入力画面からお願いします。
+        </h2>
+      </div>
+      <div class="text-center my-4">
+        <%= link_to "情報入力へ戻る", new_order_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
 <% end %>

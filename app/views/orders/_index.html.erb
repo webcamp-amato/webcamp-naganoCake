@@ -1,4 +1,5 @@
-  <table border="1">
+<div class="table-responsive">
+  <table class="table table-hover text-nowrap">
     <tr>
       <th>注文日</th>
       <th>配送先</th>
@@ -20,8 +21,8 @@
           <%= order_item.item.name %><br>
         <% end %>
       </td>
-      <td><%= order.total_price %></td>
-      <td><%= order.status[1] %></td>
+      <td><%= order.total_price.to_s(:delimited) %></td>
+      <td><%= order.status %></td>
       <td>
         <%= link_to order_path(order.id) do %>
         <span class="btn btn-sm btn-primary">表示する</span>
@@ -30,6 +31,6 @@
     </tr>
     <% end %>
   </table>
-  
+</div>
+
   <%= paginate orders %>
-  

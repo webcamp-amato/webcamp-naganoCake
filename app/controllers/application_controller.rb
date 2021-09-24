@@ -1,14 +1,43 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  # def after_sign_up_path_for(resource)
+  #   customer_path(resource)
+  # end
+
   #ログイン後の画面遷移先指定
   def after_sign_in_path_for(resource)
     case resource
     when Admin
       admin_root_path
     when Customer
-      items_path
+      root_path
     end
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+
+    # case resource
+    # when Admin
+    #   new_admin_session_path
+    # end
+
+    # case resource
+    # when Admin
+    #   new_admin_session_path
+    # when Customer
+    #   root_path
+    # end
+
+    if resource_or_scope == :admin
+      new_admin_session_path
+    elsif resource_or_scope == :customer
+      root_path
+    end
+
+
+
   end
 
   protected

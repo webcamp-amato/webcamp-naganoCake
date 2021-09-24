@@ -1,7 +1,10 @@
+<div class="header">
+  <%= render "layouts/header" %>
+</div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10 justify-content-center">
-      <h2 class="mt-3 text-center title_h2">配送先登録</h2>
+      <h2 class="mt-3 text-center title_h2 mb-4">配送先登録</h2>
       <%= form_with model: @delivery_place, url: delivery_places_path, remote:true do |f| %>
         <div class="col-12">
           <div class="form-inline form-group col-12">
@@ -23,7 +26,7 @@
         </div>
       <% end %>
     </div>
-    <h2 class="mt-3 text-center title_h2 col-10">配送先一覧</h2>
+    <h2 class="mt-3 text-center title_h2 col-10 mb-4">配送先一覧</h2>
     <div class="delivery_places_index col-10">
       <%= render "dp_index", delivery_places: @delivery_places %>
     </div>

@@ -1,8 +1,18 @@
-<div class="container">
-  <div class="mt-5">
+<div class="header">
+  <%= render "layouts/header" %>
+</div>
+
+<div class="container box">
+
+  <div class="mt-5 text-center my-4">
+    <div class="mb-5">
+      <h4>ジャンル名編集</h4>
+    </div>
+
     <%= form_with model: [:admin, @genre], local: true do |f| %>
         <%= f.text_field :name %>
         <%= f.submit "変更を保存", class: "btn btn-success" %>
       <% end %>
   </div>
+
 </div>
